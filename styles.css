@@ -187,7 +187,7 @@ ul#phonebook::-webkit-scrollbar-thumb:hover {
 /* Responsive Optimization for Mobile */
 @media (max-width: 600px) {
     ul#phonebook {
-        max-height: 60vh; 
+        max-height: 40vh; 
         padding: 8px; 
     }
 }
