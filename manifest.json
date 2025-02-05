@@ -1,8 +1,9 @@
 {
     "name": "NUIM Phonebook",
     "short_name": "NUIM Phonebook",
-    "description": "Quick access to NUIM phone numbers.",
-    "start_url": "index.html",
+    "description": "Quick access to NUIM and VA phone numbers.",
+    "start_url": "index.html?mode=nmh",
+    "scope": "./",
     "display": "standalone",
     "background_color": "#FFFFFF",
     "theme_color": "#5A268D",
@@ -17,5 +18,8 @@
             "sizes": "512x512",
             "type": "image/png"
         }
+    ],
+    "permissions": [
+        "storage"
     ]
 }
