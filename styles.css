@@ -59,33 +59,40 @@ input:focus {
 .dial-pad button {
     padding: 20px;
     font-size: 32px;
-    background: #2A002F;  /* Deep Purple */
+    font-weight: bold;
+    background: #5A268D;  /* Deep Royal Purple */
     color: #FFFFFF;
-    border: none;
-    border-radius: 10px;
+    border: 2px solid #A58BCC;  /* Light Lavender Border */
+    border-radius: 50%;  /* Circular buttons like iPhone */
     cursor: pointer;
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: bold;
     transition: background 0.3s ease-in-out, transform 0.2s;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);  /* Soft shadow for depth */
 }
 
 .dial-pad button:hover {
-    background: #8360B9; /* Muted Violet */
-    transform: scale(1.05);
+    background: #8360B9; /* Lighter Violet */
+    border-color: #C8B0DD; /* Slightly brighter border on hover */
+    transform: scale(1.05); /* Slight pop effect */
+}
+
+.dial-pad button:active {
+    background: #3D0075; /* Darker press effect */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Special styling for Call and Clear buttons */
 #callButton {
-    background: #D6C1E3;
+    background: #5A268D;
     font-size: 22px;
 }
 
 #callButton:hover {
-    background: #218838;
+    background: #5A268D;
 }
 
 #clearButton {
@@ -151,7 +158,7 @@ button:hover {
 }
 
 #toggleView:hover {
-    background: #e0a800;
+    background: #8360B9;
 }
 
 /* Responsive Design for Mobile */
