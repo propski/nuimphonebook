@@ -57,9 +57,9 @@ input:focus {
 }
 
 .dial-pad button {
-    padding: 18px;
-    font-size: 22px;
-    background: #3D0075;  /* Deep Purple */
+    padding: 20px;
+    font-size: 32px;
+    background: #2A002F;  /* Deep Purple */
     color: #FFFFFF;
     border: none;
     border-radius: 10px;
@@ -80,7 +80,7 @@ input:focus {
 
 /* Special styling for Call and Clear buttons */
 #callButton {
-    background: #28a745; /* Green for action */
+    background: #D6C1E3;
     font-size: 22px;
 }
 
@@ -89,7 +89,7 @@ input:focus {
 }
 
 #clearButton {
-    background: #dc3545; /* Red for delete */
+    background: #D6C1E3; /* Red for delete */
     font-size: 22px;
 }
 
@@ -145,8 +145,8 @@ button:hover {
 
 /* Styling for Toggle Button */
 #toggleView {
-    background: #ffc107;
-    color: black;
+    background: #5A268D;
+    color: white;
     font-weight: bold;
 }
 
