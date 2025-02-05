@@ -1,41 +1,36 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ JavaScript Loaded Successfully");
 
-document.addEventListener("DOMContentLoaded", function () {
-    console.log("✅ JavaScript Loaded Successfully");
+    // Get the toggle button and phonebook sections
+    let toggleDirectoryButton = document.getElementById("toggleDirectory");
+    let phonebookSection = document.getElementById("phonebookSection");
+    let vaPhonebookSection = document.getElementById("vaPhonebookSection");
 
-    // Get the toggle button
-    let toggleDirectoryButton = document.getElementById('toggleDirectory');
-
-    // Get the phonebook sections
-    let phonebookSection = document.getElementById('phonebookSection');
-    let vaPhonebookSection = document.getElementById('vaPhonebookSection');
-
-    // Ensure elements exist before adding event listener
     if (!toggleDirectoryButton || !phonebookSection || !vaPhonebookSection) {
-        console.error("❌ One or more elements are missing.");
+        console.error("❌ One or more elements are missing. Check your HTML.");
         return;
     }
 
     // Set initial visibility
-    phonebookSection.style.display = 'block';
-    vaPhonebookSection.style.display = 'none';
+    phonebookSection.style.display = "block";
+    vaPhonebookSection.style.display = "none";
 
-    // Add click event to toggle between phonebooks
-    toggleDirectoryButton.addEventListener('click', function () {
+    // Add event listener for toggling between directories
+    toggleDirectoryButton.addEventListener("click", function () {
         console.log("🔄 Toggle Directory Button Clicked");
 
-        if (phonebookSection.style.display === 'none') {
-            phonebookSection.style.display = 'block';
-            vaPhonebookSection.style.display = 'none';
-            toggleDirectoryButton.textContent = 'VA Phonebook';
+        if (phonebookSection.style.display === "none") {
+            phonebookSection.style.display = "block";
+            vaPhonebookSection.style.display = "none";
+            toggleDirectoryButton.textContent = "Switch to VA Phonebook";
         } else {
-            phonebookSection.style.display = 'none';
-            vaPhonebookSection.style.display = 'block';
-            toggleDirectoryButton.textContent = 'NMH Phonebook';
+            phonebookSection.style.display = "none";
+            vaPhonebookSection.style.display = "block";
+            toggleDirectoryButton.textContent = "Switch to NMH Phonebook";
         }
     });
 });
+
 
 
     // 📌 Force hiding the address bar on mobile
