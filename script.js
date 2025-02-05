@@ -24,16 +24,40 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Function to simulate making a call
-    function callNumber() {
-        let number = document.getElementById("phoneNumber").value.trim();
-        console.log("📞 Dialing: " + number);
+function callNumber() {
+    let inputField = document.getElementById("phoneNumber");
+    let number = inputField.value.trim();
 
-        if (number) {
-            window.location.href = "tel:" + number;
-        } else {
-            alert("❌ Please enter a number first.");
-        }
+    // Define prefix mapping
+    let prefixMapping = {
+        "6": "312-926",
+        "5": "312-695",
+        "4": "312-694",
+        "2": "312-472"
+    };
+
+    // Check if the entered number follows the format "X-XXXX"
+    let pattern = /^([2564])-(\d{4})$/; // Matches "2-XXXX", "4-XXXX", "5-XXXX", or "6-XXXX"
+
+    if (pattern.test(number)) {
+        let matchedPrefix = number.match(pattern)[1]; // Extract first digit (2, 4, 5, or 6)
+        let lastFourDigits = number.match(pattern)[2]; // Extract XXXX
+        number = `${prefixMapping[matchedPrefix]}-${lastFourDigits}`; // Convert to full number
     }
+
+    console.log("Dialing: " + number); // Debugging log
+
+    if (number) {
+        let dialLink = document.createElement("a");
+        dialLink.href = "tel:" + number;
+        document.body.appendChild(dialLink);
+        dialLink.click();
+        document.body.removeChild(dialLink);
+    } else {
+        alert("Please enter a valid number.");
+    }
+}
+
 
     // ✅ Fix: Attach event listeners for dial pad buttons correctly
     document.querySelectorAll(".dial-pad button").forEach(button => {
