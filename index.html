@@ -9,24 +9,25 @@
 <body>
     <div class="container">
         <!-- Phone Dialer Section -->
-        <section id="dialer-section">
-            <h1>Phone Dialer</h1>
-            <input type="text" id="phoneNumber" placeholder="Enter number" readonly>
-            <div class="dial-pad">
-                <button onclick="addNumber('1')">1</button>
-                <button onclick="addNumber('2')">2</button>
-                <button onclick="addNumber('3')">3</button>
-                <button onclick="addNumber('4')">4</button>
-                <button onclick="addNumber('5')">5</button>
-                <button onclick="addNumber('6')">6</button>
-                <button onclick="addNumber('7')">7</button>
-                <button onclick="addNumber('8')">8</button>
-                <button onclick="addNumber('9')">9</button>
-                <button id="callButton">📞 Call</button>
-                <button onclick="addNumber('0')">0</button>
-                <button onclick="clearNumber()">⌫</button>
-            </div>
-        </section>
+<section id="dialer-section">
+    <h1>Phone Dialer</h1>
+    <input type="text" id="phoneNumber" placeholder="Enter number" readonly>
+    <div class="dial-pad">
+        <button data-number="1">1</button>
+        <button data-number="2">2</button>
+        <button data-number="3">3</button>
+        <button data-number="4">4</button>
+        <button data-number="5">5</button>
+        <button data-number="6">6</button>
+        <button data-number="7">7</button>
+        <button data-number="8">8</button>
+        <button data-number="9">9</button>
+        <button id="callButton">📞 Call</button>
+        <button data-number="0">0</button>
+        <button id="clearButton">⌫</button>
+    </div>
+</section>
+
 
         <!-- Database Section -->
         <section id="database-section" style="display: none;">
@@ -160,7 +161,8 @@
         </section>
 
         <!-- Toggle Button -->
-        <button id="toggleView" onclick="toggleView()">Go to Phonebook</button>
+        <button id="toggleView">Go to Phonebook</button>
+
     </div>
 
     <script src="script.js"></script>
