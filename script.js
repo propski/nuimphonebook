@@ -1,35 +1,56 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ JavaScript Loaded Successfully");
 
-    // Get the toggle button and phonebook sections
-    let toggleDirectoryButton = document.getElementById("toggleDirectory");
-    let phonebookSection = document.getElementById("phonebookSection");
-    let vaPhonebookSection = document.getElementById("vaPhonebookSection");
+    // 📌 Get main toggle elements
+    let toggleViewButton = document.getElementById("toggleView");
+    let dialerSection = document.getElementById("dialer-section");
+    let phonebookContainer = document.getElementById("phonebook-container");
 
-    if (!toggleDirectoryButton || !phonebookSection || !vaPhonebookSection) {
-        console.error("❌ One or more elements are missing. Check your HTML.");
+    let toggleDirectoryButton = document.getElementById("toggleDirectory");
+    let nmhPhonebook = document.getElementById("phonebookSection");
+    let vaPhonebook = document.getElementById("vaPhonebookSection");
+
+    if (!toggleViewButton || !dialerSection || !phonebookContainer) {
+        console.error("❌ Missing dialer or phonebook sections.");
         return;
     }
 
-    // Set initial visibility
-    phonebookSection.style.display = "block";
-    vaPhonebookSection.style.display = "none";
+    if (!toggleDirectoryButton || !nmhPhonebook || !vaPhonebook) {
+        console.error("❌ Missing directory elements.");
+        return;
+    }
 
-    // Add event listener for toggling between directories
+    // ✅ Toggle Between Dialer and Phonebook
+    toggleViewButton.addEventListener("click", function () {
+        console.log("🔄 Toggle Main View");
+
+        if (dialerSection.style.display === "none") {
+            dialerSection.style.display = "block";
+            phonebookContainer.style.display = "none";
+            toggleViewButton.textContent = "Go to Phonebook";
+        } else {
+            dialerSection.style.display = "none";
+            phonebookContainer.style.display = "block";
+            toggleViewButton.textContent = "Go to Dialer";
+        }
+    });
+
+    // ✅ Toggle Between NMH and VA Phonebooks
     toggleDirectoryButton.addEventListener("click", function () {
-        console.log("🔄 Toggle Directory Button Clicked");
+        console.log("🔄 Toggle Directory");
 
-        if (phonebookSection.style.display === "none") {
-            phonebookSection.style.display = "block";
-            vaPhonebookSection.style.display = "none";
+        if (nmhPhonebook.style.display === "none") {
+            nmhPhonebook.style.display = "block";
+            vaPhonebook.style.display = "none";
             toggleDirectoryButton.textContent = "Switch to VA Phonebook";
         } else {
-            phonebookSection.style.display = "none";
-            vaPhonebookSection.style.display = "block";
+            nmhPhonebook.style.display = "none";
+            vaPhonebook.style.display = "block";
             toggleDirectoryButton.textContent = "Switch to NMH Phonebook";
         }
     });
 });
+
 
 
 
