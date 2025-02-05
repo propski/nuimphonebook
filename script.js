@@ -44,58 +44,73 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 📌 Apply the correct mode on page load
     applyMode();
+    
+// 📌 Function to add numbers to the input field
+function addNumber(num) {
+    let inputField = document.getElementById("phoneNumber");
 
-    // 📌 Function to add numbers to the input field
-    function addNumber(num) {
-        let inputField = document.getElementById("phoneNumber");
+    let nmhPrefixMapping = { "6": "312-926", "5": "312-695", "4": "312-694", "2": "312-472" };
+    let vaPrefixMapping = { "5": "312-569", "4": "312-469" }; // ✅ Updated VA mode to only use 5 and 4
 
-        let nmhPrefixMapping = { "6": "312-926", "5": "312-695", "4": "312-694", "2": "312-472" };
-        let vaPrefixMapping = { "5": "312-569", "4": "312-469" };
+    let prefixMapping = isVA ? vaPrefixMapping : nmhPrefixMapping; // ✅ Choose NMH or VA prefix set
 
-        let prefixMapping = isVA ? vaPrefixMapping : nmhPrefixMapping;
-
+    if (isVA) {
+        // ✅ In VA mode, allow only "5-XXXX" and "4-XXXX"
+        if (["5", "4"].includes(num) && inputField.value.length === 0) {
+            inputField.value = num + "-";
+        } else if (inputField.value.length > 0) {
+            inputField.value += num;
+        }
+    } else {
+        // ✅ In NMH mode, allow "2-XXXX", "4-XXXX", "5-XXXX", and "6-XXXX"
         if (["2", "4", "5", "6"].includes(num) && inputField.value.length === 0) {
-            inputField.value = num + "-"; // Auto-format input
+            inputField.value = num + "-";
         } else {
             inputField.value += num;
         }
     }
+}
+
+// 📌 Function to make a call
+function callNumber() {
+    let inputField = document.getElementById("phoneNumber");
+    let number = inputField.value.trim();
+
+    let nmhPrefixMapping = { "6": "312-926", "5": "312-695", "4": "312-694", "2": "312-472" };
+    let vaPrefixMapping = { "5": "312-569", "4": "312-469" }; // ✅ Updated VA mode prefixes
+
+    let prefixMapping = isVA ? vaPrefixMapping : nmhPrefixMapping; // ✅ Choose correct mapping
+
+    let pattern = isVA ? /^([54])-(\d{4})$/ : /^([2564])-(\d{4})$/; 
+    // ✅ In VA mode, allow only 5-XXXX or 4-XXXX
+    // ✅ In NMH mode, allow 2-XXXX, 4-XXXX, 5-XXXX, 6-XXXX
+
+    if (pattern.test(number)) {
+        let matchedPrefix = number.match(pattern)[1]; // Extract first digit
+        let lastFourDigits = number.match(pattern)[2]; // Extract last four digits
+        number = `${prefixMapping[matchedPrefix]}-${lastFourDigits}`; // Apply correct prefix
+    } else {
+        alert("❌ Invalid number format. Use 5-XXXX or 4-XXXX in VA mode.");
+        return;
+    }
+
+    console.log("📞 Dialing: " + number);
+
+    if (number) {
+        let dialLink = document.createElement("a");
+        dialLink.href = "tel:" + number;
+        document.body.appendChild(dialLink);
+        dialLink.click();
+        document.body.removeChild(dialLink);
+    }
+}
+   
 
     // 📌 Function to clear last entered digit
     function clearNumber() {
         let inputField = document.getElementById("phoneNumber");
         if (inputField) {
             inputField.value = inputField.value.slice(0, -1);
-        }
-    }
-
-    // 📌 Function to make a call
-    function callNumber() {
-        let inputField = document.getElementById("phoneNumber");
-        let number = inputField.value.trim();
-
-        let nmhPrefixMapping = { "6": "312-926", "5": "312-695", "4": "312-694", "2": "312-472" };
-        let vaPrefixMapping = { "5": "312-569", "4": "312-469" };
-
-        let prefixMapping = isVA ? vaPrefixMapping : nmhPrefixMapping;
-        let pattern = /^([2564])-(\d{4})$/;
-
-        if (pattern.test(number)) {
-            let matchedPrefix = number.match(pattern)[1];
-            let lastFourDigits = number.match(pattern)[2];
-            number = `${prefixMapping[matchedPrefix]}-${lastFourDigits}`;
-        }
-
-        console.log("📞 Dialing: " + number);
-
-        if (number) {
-            let dialLink = document.createElement("a");
-            dialLink.href = "tel:" + number;
-            document.body.appendChild(dialLink);
-            dialLink.click();
-            document.body.removeChild(dialLink);
-        } else {
-            alert("❌ Please enter a valid number.");
         }
     }
 
