@@ -1,15 +1,16 @@
-// Function to add numbers to input field
+// Function to add numbers to the input field
 function addNumber(num) {
-    document.getElementById("phoneNumber").value += num;
+    let inputField = document.getElementById("phoneNumber");
+    inputField.value += num;
 }
 
-// Function to clear number
+// Function to clear the last entered digit
 function clearNumber() {
     let inputField = document.getElementById("phoneNumber");
     inputField.value = inputField.value.slice(0, -1);
 }
 
-// Function to simulate calling a number
+// Function to simulate making a call
 function callNumber() {
     let number = document.getElementById("phoneNumber").value;
     if (number) {
@@ -19,7 +20,8 @@ function callNumber() {
     }
 }
 
-// Function to toggle between Dialer and Phonebook
+
+// Function to toggle between Dialer and Phonebook sections
 function toggleView() {
     let dialer = document.getElementById("dialer-section");
     let database = document.getElementById("database-section");
@@ -35,6 +37,7 @@ function toggleView() {
         button.innerText = "Go to Dialer";
     }
 }
+
 
 // Function to filter search results
 function searchNames() {
