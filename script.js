@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to add numbers to the input field
     function addNumber(num) {
-        console.log("Button clicked: " + num); // Debugging line
+        console.log("Button clicked: " + num);
         let inputField = document.getElementById("phoneNumber");
         if (inputField) {
             inputField.value += num;
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to clear the last entered digit
     function clearNumber() {
-        console.log("Clear button clicked"); // Debugging line
+        console.log("Clear button clicked");
         let inputField = document.getElementById("phoneNumber");
         if (inputField) {
             inputField.value = inputField.value.slice(0, -1);
@@ -26,10 +26,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to simulate making a call
     function callNumber() {
         let number = document.getElementById("phoneNumber").value.trim();
-        console.log("Dialing: " + number); // Debugging log
+        console.log("Dialing: " + number);
 
         if (number) {
-            // Create a temporary <a> tag to trigger the phone dialer
             let dialLink = document.createElement("a");
             dialLink.href = "tel:" + number;
             dialLink.click();
@@ -52,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let database = document.getElementById("database-section");
         let button = document.getElementById("toggleView");
 
-        console.log("Toggle button clicked"); // Debugging line
+        console.log("Toggle button clicked");
 
         if (!dialer || !database || !button) {
             console.error("One of the sections or button is missing.");
@@ -92,10 +91,12 @@ document.addEventListener("DOMContentLoaded", function () {
     if (searchInput) {
         searchInput.addEventListener("keyup", searchNames);
     }
-});
 
-    // Prevent double-tap zoom on mobile
-    document.addEventListener("dblclick", function (e) {
-        e.preventDefault(); // Disable double-tap zoom
+    // ✅ FIX: Prevent double-tap zoom without breaking button clicks
+    document.addEventListener("touchstart", function (event) {
+        if (event.touches.length > 1) {
+            event.preventDefault();
+        }
     }, { passive: false });
+
 });
