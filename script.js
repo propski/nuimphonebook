@@ -1,34 +1,40 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ JavaScript Loaded Successfully");
 
-    // Ensure the toggle button exists before adding event listener
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("✅ JavaScript Loaded Successfully");
+
+    // Get the toggle button
     let toggleDirectoryButton = document.getElementById('toggleDirectory');
 
-    if (toggleDirectoryButton) {
-        toggleDirectoryButton.addEventListener('click', function () {
-            console.log("🔄 Toggle Directory Button Clicked");
+    // Get the phonebook sections
+    let phonebookSection = document.getElementById('phonebookSection');
+    let vaPhonebookSection = document.getElementById('vaPhonebookSection');
 
-            let phonebookSection = document.getElementById('phonebookSection');
-            let vaPhonebookSection = document.getElementById('vaPhonebookSection');
-
-            if (!phonebookSection || !vaPhonebookSection) {
-                console.error("❌ One of the phonebook sections is missing.");
-                return;
-            }
-
-            if (phonebookSection.style.display === 'none') {
-                phonebookSection.style.display = 'block';
-                vaPhonebookSection.style.display = 'none';
-                toggleDirectoryButton.textContent = 'Switch to VA Phonebook Directory';
-            } else {
-                phonebookSection.style.display = 'none';
-                vaPhonebookSection.style.display = 'block';
-                toggleDirectoryButton.textContent = 'Switch to Personal Phonebook';
-            }
-        });
-    } else {
-        console.error("❌ toggleDirectory button not found.");
+    // Ensure elements exist before adding event listener
+    if (!toggleDirectoryButton || !phonebookSection || !vaPhonebookSection) {
+        console.error("❌ One or more elements are missing.");
+        return;
     }
+
+    // Set initial visibility
+    phonebookSection.style.display = 'block';
+    vaPhonebookSection.style.display = 'none';
+
+    // Add click event to toggle between phonebooks
+    toggleDirectoryButton.addEventListener('click', function () {
+        console.log("🔄 Toggle Directory Button Clicked");
+
+        if (phonebookSection.style.display === 'none') {
+            phonebookSection.style.display = 'block';
+            vaPhonebookSection.style.display = 'none';
+            toggleDirectoryButton.textContent = 'VA Phonebook';
+        } else {
+            phonebookSection.style.display = 'none';
+            vaPhonebookSection.style.display = 'block';
+            toggleDirectoryButton.textContent = 'NMH Phonebook';
+        }
+    });
 });
 
 
