@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("JavaScript loaded successfully!");
-});
+    console.log("✅ JavaScript Loaded Successfully");
 
     // Function to add numbers to the input field
     function addNumber(num) {
@@ -9,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (inputField) {
             inputField.value += num;
         } else {
-            console.error("phoneNumber input field not found.");
+            console.error("❌ phoneNumber input field not found.");
         }
     }
 
@@ -20,62 +19,60 @@ document.addEventListener("DOMContentLoaded", function () {
         if (inputField) {
             inputField.value = inputField.value.slice(0, -1);
         } else {
-            console.error("phoneNumber input field not found.");
+            console.error("❌ phoneNumber input field not found.");
         }
     }
 
     // Function to simulate making a call
     function callNumber() {
         let number = document.getElementById("phoneNumber").value.trim();
-        console.log("Dialing: " + number);
+        console.log("📞 Dialing: " + number);
 
         if (number) {
-            let dialLink = document.createElement("a");
-            dialLink.href = "tel:" + number;
-            document.body.appendChild(dialLink);
-            dialLink.click();
-            document.body.removeChild(dialLink);
+            window.location.href = "tel:" + number;
         } else {
-            alert("Please enter a number first.");
+            alert("❌ Please enter a number first.");
         }
     }
 
-    // Attach event listeners for dial pad buttons
+    // ✅ Fix: Attach event listeners for dial pad buttons correctly
     document.querySelectorAll(".dial-pad button").forEach(button => {
         button.addEventListener("click", function () {
-            let value = this.dataset.number;
-            if (value) {
+            let value = this.innerText.trim(); // ✅ Uses innerText instead of dataset
+            console.log("Button Pressed:", value);
+
+            if (value === "📞 Call") {
+                callNumber();
+            } else if (value === "⌫") {
+                clearNumber();
+            } else {
                 addNumber(value);
             }
         });
+
+        button.addEventListener("touchstart", function (event) {
+            event.preventDefault(); // ✅ Prevents double-tap zoom issues
+            let value = this.innerText.trim();
+            if (value === "📞 Call") {
+                callNumber();
+            } else if (value === "⌫") {
+                clearNumber();
+            } else {
+                addNumber(value);
+            }
+        }, { passive: false });
     });
 
-    // Attach event listener to Call button
-    let callButton = document.getElementById("callButton");
-    if (callButton) {
-        callButton.addEventListener("click", callNumber);
-    } else {
-        console.error("callButton not found.");
-    }
-
-    // Attach event listener to Clear button
-    let clearButton = document.getElementById("clearButton");
-    if (clearButton) {
-        clearButton.addEventListener("click", clearNumber);
-    } else {
-        console.error("clearButton not found.");
-    }
-
-    // Function to toggle between Dialer and Phonebook sections
+    // ✅ Fix: Toggle between Dialer and Phonebook
     function toggleView() {
         let dialer = document.getElementById("dialer-section");
         let database = document.getElementById("database-section");
         let button = document.getElementById("toggleView");
 
-        console.log("Toggle button clicked");
+        console.log("🔄 Toggle button clicked");
 
         if (!dialer || !database || !button) {
-            console.error("One of the sections or button is missing.");
+            console.error("❌ One of the sections or button is missing.");
             return;
         }
 
@@ -90,15 +87,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Attach event listener to Toggle button
+    // ✅ Attach event listener to Toggle button
     let toggleButton = document.getElementById("toggleView");
     if (toggleButton) {
         toggleButton.addEventListener("click", toggleView);
+        toggleButton.addEventListener("touchstart", toggleView, { passive: false });
     } else {
-        console.error("toggleView button not found.");
+        console.error("❌ toggleView button not found.");
     }
 
-    // Function to filter search results
+    // ✅ Function to filter search results
     function searchNames() {
         let input = document.getElementById("searchInput").value.toLowerCase();
         let items = document.querySelectorAll("#phonebook li");
@@ -109,17 +107,16 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Attach event listener to search input
+    // ✅ Attach event listener to search input
     let searchInput = document.getElementById("searchInput");
     if (searchInput) {
         searchInput.addEventListener("keyup", searchNames);
     }
 
-    // ✅ FIX: Prevent double-tap zoom without breaking button clicks
+    // ✅ Fix: Prevent double-tap zoom without breaking button clicks
     document.addEventListener("touchstart", function (event) {
         if (event.touches.length > 1) {
             event.preventDefault();
         }
     }, { passive: false });
-
 });
