@@ -1,192 +1,116 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ JavaScript Loaded Successfully");
 
-    // 📌 Get elements
-    let modeToggle = document.getElementById("modeToggle");
-    let modeLabel = document.getElementById("modeLabel");
-    let phonebookButton = document.getElementById("phonebookButton");
-    let phonebookSection = document.getElementById("phonebookSection");
-    let vaPhonebookSection = document.getElementById("vaPhonebookSection");
+    // Get elements
+    let modeToggle = document.getElementById('modeToggle');
+    let phonebookButton = document.getElementById('phonebookButton');
     let dialerSection = document.getElementById("dialer-section");
     let phonebookContainer = document.getElementById("phonebook-container");
-    let toggleViewButton = document.getElementById("toggleView");
-    let toggleDirectoryButton = document.getElementById("toggleDirectory");
-    let searchInput = document.getElementById("searchInput");
+    let phonebookSection = document.getElementById("phonebookSection");
+    let vaPhonebookSection = document.getElementById("vaPhonebookSection");
+    let inputField = document.getElementById("phoneNumber");
 
-    // 📌 Check stored mode preference
-    let isVA = localStorage.getItem("isVA") === "true"; 
+    // Load mode from localStorage
+    let isVA = localStorage.getItem("isVA") === "true";
 
-    // 📌 Apply the stored mode when the page loads
     function applyMode() {
-        if (isVA) {
-            modeToggle.checked = true;
-            modeLabel.textContent = "VA Mode";
-            phonebookButton.textContent = "VA Phonebook";
-            phonebookButton.href = "#vaPhonebookSection";
-        } else {
-            modeToggle.checked = false;
-            modeLabel.textContent = "NMH Mode";
-            phonebookButton.textContent = "NMH Phonebook";
-            phonebookButton.href = "#phonebookSection";
-        }
+        isVA = localStorage.getItem("isVA") === "true";
+        modeToggle.checked = isVA;
+        phonebookButton.textContent = isVA ? "Go to VA Phonebook" : "Go to NMH Phonebook";
         console.log("🔄 Mode Loaded: " + (isVA ? "VA" : "NMH"));
     }
 
-    // 📌 Toggle between NMH and VA mode
-    if (modeToggle) {
-        modeToggle.addEventListener("change", function () {
-            isVA = modeToggle.checked;
-            localStorage.setItem("isVA", isVA); // Save mode to localStorage
-            applyMode();
-            console.log("🔄 Mode Switched: " + (isVA ? "VA" : "NMH"));
-        });
-    }
+    // Toggle NMH / VA mode
+    modeToggle.addEventListener("change", function () {
+        isVA = modeToggle.checked;
+        localStorage.setItem("isVA", isVA);
+        applyMode();
+        console.log("🔄 Mode Switched: " + (isVA ? "VA" : "NMH"));
+    });
 
-    // 📌 Apply the correct mode on page load
-    applyMode();
-    
-// 📌 Function to add numbers to the input field
-function addNumber(num) {
-    let inputField = document.getElementById("phoneNumber");
+    // Toggle between Dialer & Phonebook
+    phonebookButton.addEventListener("click", function () {
+        if (dialerSection.style.display !== "none") {
+            dialerSection.style.display = "none";
+            phonebookContainer.style.display = "block";
+            phonebookSection.style.display = isVA ? "none" : "block";
+            vaPhonebookSection.style.display = isVA ? "block" : "none";
+        } else {
+            dialerSection.style.display = "block";
+            phonebookContainer.style.display = "none";
+        }
+    });
 
+    // NMH and VA Prefix Mappings
     let nmhPrefixMapping = { "6": "312-926", "5": "312-695", "4": "312-694", "2": "312-472" };
     let vaPrefixMapping = { "5": "312-569", "4": "312-469" };
 
-    let prefixMapping = isVA ? vaPrefixMapping : nmhPrefixMapping; // ✅ Select NMH or VA mode
+    // Function to add numbers to the input field
+    function addNumber(num) {
+        if (!inputField) return;
 
-    // ✅ If it's the first digit, check if it should apply a prefix shortcut
-    if (inputField.value.length === 0) {
-        if ((isVA && (num === "4" || num === "5")) || (!isVA && ["2", "4", "5", "6"].includes(num))) {
-            inputField.value = num + "-"; // ✅ Auto-format for VA/NMH prefixes
+        let prefixMapping = isVA ? vaPrefixMapping : nmhPrefixMapping;
+
+        // If first digit is a shortcut, format it
+        if (inputField.value.length === 0 && prefixMapping[num]) {
+            inputField.value = num + "-";
             return;
         }
+
+        // Allow full manual number input
+        inputField.value += num;
     }
 
-    // ✅ Allow full manual entry (e.g., "123-456-7890")
-    inputField.value += num;
-}
-
-
-// 📌 Function to make a call
-function callNumber() {
-    let inputField = document.getElementById("phoneNumber");
-    let number = inputField.value.trim();
-
-    let nmhPrefixMapping = { "6": "312-926", "5": "312-695", "4": "312-694", "2": "312-472" };
-    let vaPrefixMapping = { "5": "312-569", "4": "312-469" }; // ✅ Updated VA mode prefixes
-
-    let prefixMapping = isVA ? vaPrefixMapping : nmhPrefixMapping; // ✅ Choose correct mapping
-
-    let pattern = isVA ? /^([54])-(\d{4})$/ : /^([2564])-(\d{4})$/; 
-    // ✅ In VA mode, allow only 5-XXXX or 4-XXXX
-    // ✅ In NMH mode, allow 2-XXXX, 4-XXXX, 5-XXXX, 6-XXXX
-
-    if (pattern.test(number)) {
-        let matchedPrefix = number.match(pattern)[1]; // Extract first digit
-        let lastFourDigits = number.match(pattern)[2]; // Extract last four digits
-        number = `${prefixMapping[matchedPrefix]}-${lastFourDigits}`; // Apply correct prefix
-    } else {
-        alert("❌ Invalid number format. Use 5-XXXX or 4-XXXX in VA mode.");
-        return;
-    }
-
-    console.log("📞 Dialing: " + number);
-
-    if (number) {
-        let dialLink = document.createElement("a");
-        dialLink.href = "tel:" + number;
-        document.body.appendChild(dialLink);
-        dialLink.click();
-        document.body.removeChild(dialLink);
-    }
-}
-   
-
-    // 📌 Function to clear last entered digit
+    // Function to clear last entered digit
     function clearNumber() {
-        let inputField = document.getElementById("phoneNumber");
         if (inputField) {
             inputField.value = inputField.value.slice(0, -1);
         }
     }
 
-    // 📌 Attach event listeners for dial pad buttons
+    // Function to make a call
+    function callNumber() {
+        if (!inputField) return;
+        let number = inputField.value.trim();
+
+        let prefixMapping = isVA ? vaPrefixMapping : nmhPrefixMapping;
+        let pattern = isVA ? /^([45])-(\d{4})$/ : /^([2564])-(\d{4})$/;
+
+        if (pattern.test(number)) {
+            let matchedPrefix = number.match(pattern)[1];
+            let lastFourDigits = number.match(pattern)[2];
+            number = `${prefixMapping[matchedPrefix]}-${lastFourDigits}`;
+        }
+
+        console.log("📞 Dialing: " + number);
+
+        if (number) {
+            let dialLink = document.createElement("a");
+            dialLink.href = "tel:" + number;
+            document.body.appendChild(dialLink);
+            dialLink.click();
+            document.body.removeChild(dialLink);
+        }
+    }
+
+    // Attach event listeners to dial pad buttons
     document.querySelectorAll(".dial-pad button").forEach(button => {
         button.addEventListener("click", function () {
             let value = this.innerText.trim();
-
-            if (value === "📞 Call") {
-                callNumber();
-            } else if (value === "⌫") {
-                clearNumber();
-            } else {
-                addNumber(value);
-            }
+            if (value === "📞 Call") callNumber();
+            else if (value === "⌫") clearNumber();
+            else addNumber(value);
         });
 
         button.addEventListener("touchstart", function (event) {
             event.preventDefault();
             let value = this.innerText.trim();
-            if (value === "📞 Call") {
-                callNumber();
-            } else if (value === "⌫") {
-                clearNumber();
-            } else {
-                addNumber(value);
-            }
+            if (value === "📞 Call") callNumber();
+            else if (value === "⌫") clearNumber();
+            else addNumber(value);
         }, { passive: false });
     });
 
-    // 📌 Toggle Between Dialer & Phonebook
-    if (toggleViewButton && dialerSection && phonebookContainer) {
-        toggleViewButton.addEventListener("click", function () {
-            if (dialerSection.style.display === "none") {
-                dialerSection.style.display = "block";
-                phonebookContainer.style.display = "none";
-                toggleViewButton.textContent = "Go to Phonebook";
-            } else {
-                dialerSection.style.display = "none";
-                phonebookContainer.style.display = "block";
-                toggleViewButton.textContent = "Go to Dialer";
-            }
-        });
-    }
-
-    // 📌 Toggle Between NMH & VA Phonebooks
-    if (toggleDirectoryButton && phonebookSection && vaPhonebookSection) {
-        toggleDirectoryButton.addEventListener("click", function () {
-            if (phonebookSection.style.display === "none") {
-                phonebookSection.style.display = "block";
-                vaPhonebookSection.style.display = "none";
-                toggleDirectoryButton.textContent = "Go to VA Phonebook";
-            } else {
-                phonebookSection.style.display = "none";
-                vaPhonebookSection.style.display = "block";
-                toggleDirectoryButton.textContent = "Go to NMH Phonebook";
-            }
-        });
-    }
-
-    // 📌 Search Function
-    if (searchInput) {
-        searchInput.addEventListener("keyup", function () {
-            let input = searchInput.value.toLowerCase();
-            document.querySelectorAll("#phonebook li").forEach(li => {
-                let text = li.textContent.toLowerCase();
-                li.style.display = text.includes(input) ? "block" : "none";
-            });
-        });
-    }
-
-    // 📌 Prevent Double-Tap Zoom Without Breaking Button Clicks
-    document.addEventListener("touchstart", function (event) {
-        if (event.touches.length > 1) {
-            event.preventDefault();
-        }
-    }, { passive: false });
-
-    // 📌 Hide Browser Address Bar on Mobile
-    setTimeout(function () {
-        window.scrollTo(0, 1);
-    }, 100);
+    // Apply stored mode on page load
+    applyMode();
 });
