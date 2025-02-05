@@ -36,7 +36,7 @@
 
         <!-- Database Section -->
         <section id="database-section" style="display: none;">
-            <h1>NMH Phonebook Directory</h1>
+            <h1>NMH Phonebook</h1>
             <input type="text" id="searchInput" placeholder="Search for names or numbers..." onkeyup="searchNames()">
             <ul id="phonebook">
 <h2>General</h2>
@@ -167,10 +167,30 @@
         </section>
 
         <!-- Toggle Button -->
-        <button id="toggleView" onclick="toggleView()">Go to Phonebook</button>
+        <button id="toggleView" onclick="toggleView()">NMH Phonebook</button>
 
     </div>
 
     <script src="script.js"></script>
+
+    <!-- Toggle Button -->
+<button id="toggleDirectory">VA Phonebook</button>
+
+<!-- Existing Phonebook Section -->
+<div id="phonebookSection">
+    <!-- Your existing phonebook content -->
+</div>
+
+<!-- VA Phonebook Section -->
+<div id="vaPhonebookSection" style="display: none;">
+    <h2>VA Phonebook </h2>
+    <ul>
+        <li><strong>Jesse Brown VAMC Main Line:</strong> 312-569-8387</li>
+        <li><strong>Jesse Brown VAMC Main Line:</strong> 312-569-8387</li>
+        <li><strong>Jesse Brown VAMC Main Line:</strong> 312-569-8387</li>
+        <li><strong>Jesse Brown VAMC Main Line:</strong> 312-569-8387</li>
+        <li><strong>Jesse Brown VAMC Main Line:</strong> 312-569-8387</li>    </ul>
+</div>
+
 </body>
 </html>
