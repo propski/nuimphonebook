@@ -13,20 +13,20 @@
 </head>
 <body>
 
-    <!-- Mode Toggle Switch -->
-<div class="toggle-container">
-    <label class="switch">
-        <input type="checkbox" id="modeToggle">
-        <span class="slider round"></span>
-    </label>
-    <span id="modeLabel">NMH Mode</span>
-</div>
+    <div class="container">
+        <!-- 📌 Mode Toggle Switch -->
+        <div class="toggle-container">
+            <label class="switch">
+                <input type="checkbox" id="modeToggle">
+                <span class="slider round"></span>
+            </label>
+            <span id="modeLabel">NMH Mode</span>
+        </div>
 
-<!-- Phonebook Button -->
-<button id="phonebookButton">NMH Phonebook</button>
+        <!-- 📌 Phonebook Button (Dynamically Switches Between NMH/VA) -->
+        <button id="phonebookButton">Go to NMH Phonebook</button>
 
-
-        <!-- NMH Phone Dialer Section -->
+        <!-- 📌 NMH Phone Dialer Section -->
         <section id="dialer-section">
             <input type="text" id="phoneNumber" placeholder="Enter number" readonly>
             <div class="dial-pad">
@@ -45,35 +45,31 @@
             </div>
         </section>
 
-            <div class="container">
-        <!-- Toggle Buttons -->
-        <button id="toggleView">Go to NMH Phonebook</button>
+        <!-- 📌 Toggle Buttons -->
+        <button id="toggleView">Go to Phonebook</button>
         <button id="toggleDirectory">Go to VA Phonebook</button>
 
-        <!-- Phonebook Sections -->
+        <!-- 📌 Phonebook Sections (Hidden Initially) -->
         <section id="phonebook-container" style="display: none;">
-            <!-- NMH Phonebook -->
+            
+            <!-- 📌 NMH Phonebook -->
             <section id="phonebookSection">
                 <h1>NMH Phonebook</h1>
-                <input type="text" id="searchInput" placeholder="Search for names or numbers..." onkeyup="searchNames()">
+                <input type="text" id="searchInput" placeholder="Search for names or numbers...">
                 <ul id="phonebook">
                     <h2>General</h2>
-                    <ul>
-                        <li><strong>Cardiac Arrest:</strong> <a href="tel:3126955555">312-695-5555</a></li>
-                        <li><strong>IT Helpdesk:</strong> <a href="tel:3129264357">312-926-4357</a></li>
-                        <li><strong>NMFF Clinic:</strong> <a href="tel:3126958630">312-695-8630</a></li>
-                    </ul>
+                    <li><strong>Cardiac Arrest:</strong> <a href="tel:3126955555">312-695-5555</a></li>
+                    <li><strong>IT Helpdesk:</strong> <a href="tel:3129264357">312-926-4357</a></li>
+                    <li><strong>NMFF Clinic:</strong> <a href="tel:3126958630">312-695-8630</a></li>
 
                     <h2>Medicine Floors</h2>
-                    <ul>
-                        <li><strong>MICU:</strong> <a href="tel:3129265140">312-926-5140</a></li>
-                        <li><strong>MICU Charge RN:</strong> <a href="tel:3129265127">312-926-5127</a></li>
-                        <li><strong>MICU Fax:</strong> <a href="tel:3129269332">312-926-9332</a></li>
-                    </ul>
+                    <li><strong>MICU:</strong> <a href="tel:3129265140">312-926-5140</a></li>
+                    <li><strong>MICU Charge RN:</strong> <a href="tel:3129265127">312-926-5127</a></li>
+                    <li><strong>MICU Fax:</strong> <a href="tel:3129269332">312-926-9332</a></li>
                 </ul>
             </section>
 
-            <!-- VA Phonebook -->
+            <!-- 📌 VA Phonebook (Hidden by Default) -->
             <section id="vaPhonebookSection" style="display: none;">
                 <h1>VA Phonebook</h1>
                 <ul>
@@ -81,11 +77,10 @@
                     <li><strong>JBVAMC Test 2:</strong> <a href="tel:3125698387">312-569-8387</a></li>
                 </ul>
             </section>
+
         </section>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
-
-
