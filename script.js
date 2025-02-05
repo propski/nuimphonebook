@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("JavaScript loaded successfully!");
+});
 
     // Function to add numbers to the input field
     function addNumber(num) {
