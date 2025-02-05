@@ -305,6 +305,11 @@ button:hover {
     width: 100%;
 }
 
+#vaPhonebookSection {
+    display: none;
+}
+
+
 /* Adjust Toggle Buttons */
 #toggleView,
 #toggleDirectory {
