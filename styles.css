@@ -87,22 +87,37 @@ input:focus {
 
 /* Special styling for Call and Clear buttons */
 #callButton {
-    background: #5A268D;
+    background: #C2ABD0; /* Soft Lavender */
+    color: #3D0075; /* Deep Purple Text */
+    border: 2px solid #A58BCC;
     font-size: 22px;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 10px;
+    transition: background 0.3s, transform 0.2s;
 }
 
 #callButton:hover {
-    background: #5A268D;
+    background: #A58BCC;
+    transform: scale(1.05);
 }
 
 #clearButton {
-    background: #5A268D;
+    background: #C2ABD0; /* Soft Lavender */
+    color: #3D0075;
+    border: 2px solid #A58BCC;
     font-size: 22px;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 10px;
+    transition: background 0.3s, transform 0.2s;
 }
 
 #clearButton:hover {
-    background: #8360B9;
+    background: #A58BCC;
+    transform: scale(1.05);
 }
+
 
 /* Phonebook List Styling */
 ul#phonebook {
@@ -152,14 +167,20 @@ button:hover {
 
 /* Styling for Toggle Button */
 #toggleView {
-    background: #5A268D;
-    color: white;
+    background: #C2ABD0; /* Soft Lavender */
+    color: #3D0075;
     font-weight: bold;
+    border: 2px solid #A58BCC;
+    padding: 12px 20px;
+    border-radius: 10px;
+    transition: background 0.3s, transform 0.2s;
 }
 
 #toggleView:hover {
-    background: #8360B9;
+    background: #A58BCC;
+    transform: scale(1.05);
 }
+
 
 /* Responsive Design for Mobile */
 @media (max-width: 600px) {
