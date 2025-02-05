@@ -1,13 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ JavaScript Loaded Successfully");
 
-     // Toggle between Phonebook and VA Phonebook Directory
+    // Ensure the toggle button exists before adding event listener
     let toggleDirectoryButton = document.getElementById('toggleDirectory');
 
     if (toggleDirectoryButton) {
-        toggleDirectoryButton.addEventListener('click', function() {
-            var phonebookSection = document.getElementById('phonebookSection');
-            var vaPhonebookSection = document.getElementById('vaPhonebookSection');
+        toggleDirectoryButton.addEventListener('click', function () {
+            console.log("🔄 Toggle Directory Button Clicked");
+
+            let phonebookSection = document.getElementById('phonebookSection');
+            let vaPhonebookSection = document.getElementById('vaPhonebookSection');
+
+            if (!phonebookSection || !vaPhonebookSection) {
+                console.error("❌ One of the phonebook sections is missing.");
+                return;
+            }
 
             if (phonebookSection.style.display === 'none') {
                 phonebookSection.style.display = 'block';
@@ -23,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("❌ toggleDirectory button not found.");
     }
 });
+
 
     // 📌 Force hiding the address bar on mobile
     setTimeout(function () {
