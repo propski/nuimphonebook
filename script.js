@@ -26,14 +26,18 @@ document.addEventListener("DOMContentLoaded", function () {
 // Function to simulate making a call
 function callNumber() {
     let number = document.getElementById("phoneNumber").value.trim();
-    console.log("Calling: " + number); // Debugging log
+    console.log("Dialing: " + number); // Debugging log
 
     if (number) {
-        window.location.href = "tel:" + number; // Open phone dialer
+        // Create a temporary <a> tag to trigger the phone dialer
+        let dialLink = document.createElement("a");
+        dialLink.href = "tel:" + number;
+        dialLink.click();
     } else {
         alert("Please enter a number first.");
     }
 }
+
 
 
 
