@@ -23,16 +23,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Function to simulate making a call
-    function callNumber() {
-        let number = document.getElementById("phoneNumber").value;
-        console.log("Calling: " + number); // Debugging line
-        if (number) {
-            alert("Calling " + number + "...");
-        } else {
-            alert("Please enter a number first.");
-        }
+// Function to simulate making a call
+function callNumber() {
+    let number = document.getElementById("phoneNumber").value.trim();
+    console.log("Calling: " + number); // Debugging line
+
+    if (number) {
+        // Redirect to dialer
+        window.location.href = "tel:" + number;
+    } else {
+        alert("Please enter a number first.");
     }
+}
+
 
     // Attach event listeners to dial pad buttons dynamically
     let buttons = document.querySelectorAll(".dial-pad button");
