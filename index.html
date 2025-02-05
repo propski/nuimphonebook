@@ -33,8 +33,11 @@
             </div>
         </section>
 
-
-        <!-- NMH Phonebook Directory -->
+        <!-- Phonebook Sections (Toggled) -->
+        <section id="phonebook-container" style="display: none;">
+            <button id="toggleDirectory">VA Phonebook</button>
+            
+        <!-- NMH Phonebook  -->
         <section id="phonebookSection">
             <h1>NMH Phonebook</h1>
             <input type="text" id="searchInput" placeholder="Search for names or numbers..." onkeyup="searchNames()">
@@ -164,7 +167,7 @@
     <li><strong>Imaging Disk Request:</strong> <a href="tel:3129265510">312-926-5510</a></li>
 </ul>
         </ul>
-            </ul>
+            </ul> </section>
 
    <section id="vaPhonebookSection" style="display: none;">
             <h1>VA Phonebook</h1>
@@ -177,9 +180,7 @@
         <li><strong>JBVAMC Test 5:</strong> 312-569-8387</li>    </ul> </section>
 
   <!-- Toggle Buttons -->
-        <button id="toggleView" onclick="toggleView()">NMH Phonebook</button>
-        <button id="toggleDirectory"> VA Phonebook</button>
-
+    <button id="toggleView">NMH Phonebook</button>
     </div>
 
     <script src="script.js"></script>
