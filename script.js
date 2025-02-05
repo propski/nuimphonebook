@@ -2,35 +2,48 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ JavaScript Loaded Successfully");
 
     // 📌 Get elements
-    let toggleModeSwitch = document.getElementById('toggleMode');
-    let phonebookButton = document.getElementById('phonebookButton');
-    let modeText = document.getElementById('modeText');
-    let phonebookSection = document.getElementById('phonebookSection');
-    let vaPhonebookSection = document.getElementById('vaPhonebookSection');
-    let dialerSection = document.getElementById('dialer-section');
-    let phonebookContainer = document.getElementById('phonebook-container');
+    let modeToggle = document.getElementById("modeToggle");
+    let modeLabel = document.getElementById("modeLabel");
+    let phonebookButton = document.getElementById("phonebookButton");
+    let phonebookSection = document.getElementById("phonebookSection");
+    let vaPhonebookSection = document.getElementById("vaPhonebookSection");
+    let dialerSection = document.getElementById("dialer-section");
+    let phonebookContainer = document.getElementById("phonebook-container");
     let toggleViewButton = document.getElementById("toggleView");
     let toggleDirectoryButton = document.getElementById("toggleDirectory");
     let searchInput = document.getElementById("searchInput");
 
-    let isVA = false; // Default mode: NMH
+    // 📌 Check stored mode preference
+    let isVA = localStorage.getItem("isVA") === "true"; 
+
+    // 📌 Apply the stored mode when the page loads
+    function applyMode() {
+        if (isVA) {
+            modeToggle.checked = true;
+            modeLabel.textContent = "VA Mode";
+            phonebookButton.textContent = "VA Phonebook";
+            phonebookButton.href = "#vaPhonebookSection";
+        } else {
+            modeToggle.checked = false;
+            modeLabel.textContent = "NMH Mode";
+            phonebookButton.textContent = "NMH Phonebook";
+            phonebookButton.href = "#phonebookSection";
+        }
+        console.log("🔄 Mode Loaded: " + (isVA ? "VA" : "NMH"));
+    }
 
     // 📌 Toggle between NMH and VA mode
-    if (toggleModeSwitch) {
-        toggleModeSwitch.addEventListener('click', function () {
-            isVA = !isVA; // Toggle state
-
-            if (isVA) {
-                modeText.textContent = "Mode: VA";
-                phonebookButton.dataset.target = "vaPhonebookSection"; // Store VA phonebook
-            } else {
-                modeText.textContent = "Mode: NMH";
-                phonebookButton.dataset.target = "phonebookSection"; // Store NMH phonebook
-            }
-
+    if (modeToggle) {
+        modeToggle.addEventListener("change", function () {
+            isVA = modeToggle.checked;
+            localStorage.setItem("isVA", isVA); // Save mode to localStorage
+            applyMode();
             console.log("🔄 Mode Switched: " + (isVA ? "VA" : "NMH"));
         });
     }
+
+    // 📌 Apply the correct mode on page load
+    applyMode();
 
     // 📌 Function to add numbers to the input field
     function addNumber(num) {
@@ -86,6 +99,33 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    // 📌 Attach event listeners for dial pad buttons
+    document.querySelectorAll(".dial-pad button").forEach(button => {
+        button.addEventListener("click", function () {
+            let value = this.innerText.trim();
+
+            if (value === "📞 Call") {
+                callNumber();
+            } else if (value === "⌫") {
+                clearNumber();
+            } else {
+                addNumber(value);
+            }
+        });
+
+        button.addEventListener("touchstart", function (event) {
+            event.preventDefault();
+            let value = this.innerText.trim();
+            if (value === "📞 Call") {
+                callNumber();
+            } else if (value === "⌫") {
+                clearNumber();
+            } else {
+                addNumber(value);
+            }
+        }, { passive: false });
+    });
+
     // 📌 Toggle Between Dialer & Phonebook
     if (toggleViewButton && dialerSection && phonebookContainer) {
         toggleViewButton.addEventListener("click", function () {
@@ -126,4 +166,16 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     }
+
+    // 📌 Prevent Double-Tap Zoom Without Breaking Button Clicks
+    document.addEventListener("touchstart", function (event) {
+        if (event.touches.length > 1) {
+            event.preventDefault();
+        }
+    }, { passive: false });
+
+    // 📌 Hide Browser Address Bar on Mobile
+    setTimeout(function () {
+        window.scrollTo(0, 1);
+    }, 100);
 });
