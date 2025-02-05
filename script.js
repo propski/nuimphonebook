@@ -26,15 +26,15 @@ document.addEventListener("DOMContentLoaded", function () {
 // Function to simulate making a call
 function callNumber() {
     let number = document.getElementById("phoneNumber").value.trim();
-    console.log("Calling: " + number); // Debugging line
+    console.log("Calling: " + number); // Debugging log
 
     if (number) {
-        // Redirect to dialer
-        window.location.href = "tel:" + number;
+        window.location.href = "tel:" + number; // Open phone dialer
     } else {
         alert("Please enter a number first.");
     }
 }
+
 
 
     // Attach event listeners to dial pad buttons dynamically
