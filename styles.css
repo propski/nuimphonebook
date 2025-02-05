@@ -1,118 +1,75 @@
-/* Use the purple color scheme */
+/* Prevent double-tap zoom */
 html, body {
     touch-action: manipulation;
-    background: linear-gradient(to bottom, #21002E, #3D0075, #56208A);
-    color: #E2D6EF;
+}
+
+body {
     font-family: Arial, sans-serif;
     text-align: center;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
 }
 
-/* Container Styling */
 .container {
-    width: 90%;
-    max-width: 450px;
-    margin: 30px auto;
-    background: #3D0075;
-    padding: 25px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 500px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    text-align: center;
 }
 
-/* Header Text */
 h1 {
     font-size: 24px;
-    color: #E2D6EF;
 }
 
-/* Input Fields */
 input {
-    width: 90%;
-    padding: 12px;
+    width: 80%;
+    padding: 10px;
     font-size: 20px;
     text-align: center;
-    margin: 15px 0;
-    border: 2px solid #A58BCC;
-    border-radius: 8px;
-    background: #56208A;
-    color: #E2D6EF;
-    outline: none;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-input:focus {
-    border-color: #C8B0DD;
-}
-
-/* Dial Pad Styling */
+/* Phone Dialer Styles */
 .dial-pad {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+    gap: 10px;
     justify-content: center;
-    padding: 20px;
-    max-width: 300px;
-    margin: 0 auto;
 }
 
 .dial-pad button {
     padding: 20px;
     font-size: 24px;
-    background: #6C3FA1;
-    color: #E2D6EF;
+    background: #007BFF;
+    color: white;
     border: none;
-    border-radius: 50%;
+    border-radius: 5px;
     cursor: pointer;
-    width: 70px;
-    height: 70px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .dial-pad button:hover {
-    background: #8360B9;
+    background: #0056b3;
 }
 
-/* Special styling for Call and Clear buttons */
-#callButton {
-    background: #28a745;
-    font-size: 22px;
-}
-
-#callButton:hover {
-    background: #218838;
-}
-
-#clearButton {
-    background: #dc3545;
-    font-size: 22px;
-}
-
-#clearButton:hover {
-    background: #c82333;
-}
-
-/* Phonebook List Styling */
+/* Phonebook List Styles */
 ul#phonebook {
     list-style-type: none;
     padding: 0;
     text-align: left;
     max-height: 300px;
     overflow-y: auto;
-    border: 1px solid #A58BCC;
-    border-radius: 5px;
-    padding: 10px;
-    background: #56208A;
 }
 
 ul#phonebook li {
-    padding: 12px;
-    border-bottom: 1px solid #C8B0DD;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
     font-size: 18px;
-    display: flex;
-    justify-content: space-between;
 }
 
 ul#phonebook li:last-child {
@@ -120,16 +77,16 @@ ul#phonebook li:last-child {
 }
 
 ul#phonebook li strong {
-    color: #C8B0DD;
+    color: #333;
 }
 
 /* Buttons */
 button {
-    margin-top: 15px;
-    padding: 12px 20px;
+    margin-top: 20px;
+    padding: 10px 20px;
     font-size: 18px;
-    background: #56208A;
-    color: #E2D6EF;
+    background: #28a745;
+    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -137,18 +94,7 @@ button {
 }
 
 button:hover {
-    background: #8360B9;
-}
-
-/* Styling for Toggle Button */
-#toggleView {
-    background: #ffc107;
-    color: black;
-    font-weight: bold;
-}
-
-#toggleView:hover {
-    background: #e0a800;
+    background: #218838;
 }
 
 /* Responsive Design for Mobile */
@@ -171,9 +117,3 @@ button:hover {
         font-size: 16px;
     }
 }
-
-/* Debugging: Highlight buttons */
-button {
-    outline: 2px solid red !important;
-}
-
