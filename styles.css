@@ -124,12 +124,11 @@ ul#phonebook {
     list-style-type: none;
     padding: 0;
     text-align: left;
-    max-height: 300px;
-    overflow-y: auto;
-    border: 1px solid #A58BCC;
-    border-radius: 5px;
-    padding: 10px;
-    background: #FFFFFF;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    max-height: none;
+    overflow-y: auto
 }
 
 ul#phonebook li {
