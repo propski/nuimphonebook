@@ -1,6 +1,29 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ JavaScript Loaded Successfully");
 
+     // Toggle between Phonebook and VA Phonebook Directory
+    let toggleDirectoryButton = document.getElementById('toggleDirectory');
+
+    if (toggleDirectoryButton) {
+        toggleDirectoryButton.addEventListener('click', function() {
+            var phonebookSection = document.getElementById('phonebookSection');
+            var vaPhonebookSection = document.getElementById('vaPhonebookSection');
+
+            if (phonebookSection.style.display === 'none') {
+                phonebookSection.style.display = 'block';
+                vaPhonebookSection.style.display = 'none';
+                toggleDirectoryButton.textContent = 'Switch to VA Phonebook Directory';
+            } else {
+                phonebookSection.style.display = 'none';
+                vaPhonebookSection.style.display = 'block';
+                toggleDirectoryButton.textContent = 'Switch to Personal Phonebook';
+            }
+        });
+    } else {
+        console.error("❌ toggleDirectory button not found.");
+    }
+});
+
     // 📌 Force hiding the address bar on mobile
     setTimeout(function () {
         window.scrollTo(0, 1);
