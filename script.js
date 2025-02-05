@@ -93,3 +93,10 @@ document.addEventListener("DOMContentLoaded", function () {
         searchInput.addEventListener("keyup", searchNames);
     }
 });
+
+    // Prevent double-tap zoom on mobile
+    document.addEventListener("dblclick", function (e) {
+        e.preventDefault(); // Disable double-tap zoom
+    }, { passive: false });
+});
+
