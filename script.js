@@ -1,6 +1,16 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ JavaScript Loaded Successfully");
 
+    // 📌 Force hiding the address bar on mobile
+    setTimeout(function () {
+        window.scrollTo(0, 1);
+    }, 100); // Small delay ensures better behavior
+
+    // 📌 Prevent touch gestures from triggering browser UI
+    document.addEventListener("touchmove", function (event) {
+        event.preventDefault();
+    }, { passive: false });
+    
     document.addEventListener("DOMContentLoaded", function () {
     window.scrollTo(0, 1); // Pushes the address bar out of view on load
     window.addEventListener("load", function() {
