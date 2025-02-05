@@ -274,3 +274,52 @@ button:hover {
         font-size: 16px;
     }
 }
+
+/* Button Styling */
+button {
+    display: block;
+    width: 90%;
+    margin: 10px auto;
+    padding: 12px 20px;
+    font-size: 18px;
+    background: #5A268D;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+}
+
+button:hover {
+    background: #8360B9;
+}
+
+/* Ensure Containers Are Centered */
+.container {
+    text-align: center;
+}
+
+/* Phonebook Sections */
+#phonebook-container {
+    text-align: left;
+    width: 100%;
+}
+
+/* Adjust Toggle Buttons */
+#toggleView,
+#toggleDirectory {
+    text-align: center;
+    font-weight: bold;
+    background: #C2ABD0;
+    color: #3D0075;
+    border: 2px solid #A58BCC;
+    padding: 12px 20px;
+    border-radius: 10px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+#toggleView:hover,
+#toggleDirectory:hover {
+    background: #A58BCC;
+    transform: scale(1.05);
+}
