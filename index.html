@@ -8,12 +8,15 @@
     <meta name="apple-mobile-web-app-title" content="NUIM Phonebook">
     <link rel="apple-touch-icon" href="icon.png">
     <link rel="manifest" href="manifest.json">
-
     <title>NMH Phonebook</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
+        <!-- Toggle Buttons -->
+        <button id="toggleView">Go to NMH Phonebook</button>
+        <button id="toggleDirectory">Go to VA Phonebook</button>
+
         <!-- NMH Phone Dialer Section -->
         <section id="dialer-section">
             <input type="text" id="phoneNumber" placeholder="Enter number" readonly>
@@ -33,160 +36,42 @@
             </div>
         </section>
 
-        <!-- Phonebook Sections (Toggled) -->
+        <!-- Phonebook Sections -->
         <section id="phonebook-container" style="display: none;">
-            <button id="toggleDirectory">VA Phonebook</button>
-            
-        <!-- NMH Phonebook  -->
-        <section id="phonebookSection">
-            <h1>NMH Phonebook</h1>
-            <input type="text" id="searchInput" placeholder="Search for names or numbers..." onkeyup="searchNames()">
-            <ul id="phonebook">
-         
-<h2>General</h2>
-        <ul>
-  <li><strong>Cardiac Arrest:</strong> <a href="tel:3126955555">312-695-5555</a></li>
-    <li><strong>IT Helpdesk:</strong> <a href="tel:3129264357">312-926-4357</a></li>
-    <li><strong>NMFF Clinic:</strong> <a href="tel:3126958630">312-695-8630</a></li>
-    <li><strong>Bed Assignment:</strong> <a href="tel:3129262051">312-926-2051</a></li>
-    <li><strong>PTC:</strong> <a href="tel:3129267647">312-926-7647</a></li>
-    <li><strong>External Transfer:</strong> <a href="tel:3129263321">312-926-3321</a></li>
-    <li><strong>Physician Referral Svcs:</strong> <a href="tel:3129268400">312-926-8400</a></li>
-        </ul>
+            <!-- NMH Phonebook -->
+            <section id="phonebookSection">
+                <h1>NMH Phonebook</h1>
+                <input type="text" id="searchInput" placeholder="Search for names or numbers..." onkeyup="searchNames()">
+                <ul id="phonebook">
+                    <h2>General</h2>
+                    <ul>
+                        <li><strong>Cardiac Arrest:</strong> <a href="tel:3126955555">312-695-5555</a></li>
+                        <li><strong>IT Helpdesk:</strong> <a href="tel:3129264357">312-926-4357</a></li>
+                        <li><strong>NMFF Clinic:</strong> <a href="tel:3126958630">312-695-8630</a></li>
+                    </ul>
 
-<h2>Medicine Floors</h2>
-        <ul>
- <li><strong>MICU:</strong> <a href="tel:3129265140">312-926-5140</a></li>
-    <li><strong>MICU Charge RN:</strong> <a href="tel:3129265127">312-926-5127</a></li>
-    <li><strong>MICU Fax:</strong> <a href="tel:3129269332">312-926-9332</a></li>
-    <li><strong>CCU:</strong> <a href="tel:3129265172">312-926-5172</a></li>
-    <li><strong>CCU Charge RN:</strong> <a href="tel:3129265673">312-926-5673</a></li>
-    <li><strong>CCU Fax:</strong> <a href="tel:3129267294">312-926-7294</a></li>
-    <li><strong>Cardiology:</strong> <a href="tel:3126941292">312-694-1292</a></li>
-    <li><strong>Cardiology Fax:</strong> <a href="tel:3126941364">312-694-1364</a></li>
-    <li><strong>11E:</strong> <a href="tel:3129262853">312-926-2853</a></li>
-    <li><strong>13E:</strong> <a href="tel:3129262356">312-926-2356</a></li>
-    <li><strong>13W:</strong> <a href="tel:3129262381">312-926-2381</a></li>
-    <li><strong>14E:</strong> <a href="tel:3129262365">312-926-2365</a></li>
-    <li><strong>15E:</strong> <a href="tel:3129262362">312-926-2362</a></li>
-    <li><strong>Dialysis:</strong> <a href="tel:3129261696">312-926-1696</a></li>
-    <li><strong>Prentice 14 N/S:</strong> <a href="tel:3124721410">312-472-1410</a></li>
-    <li><strong>Prentice 15 N/S:</strong> <a href="tel:3124721510">312-472-1510</a></li>
-    <li><strong>Prentice 16 N/S:</strong> <a href="tel:3124721610">312-472-1610</a></li>
-    <li><strong>ER 1st Floor:</strong> <a href="tel:3129266222">312-926-6222</a></li>
-    <li><strong>ER Mezzanine:</strong> <a href="tel:3129261095">312-926-1095</a></li>
-        </ul>
+                    <h2>Medicine Floors</h2>
+                    <ul>
+                        <li><strong>MICU:</strong> <a href="tel:3129265140">312-926-5140</a></li>
+                        <li><strong>MICU Charge RN:</strong> <a href="tel:3129265127">312-926-5127</a></li>
+                        <li><strong>MICU Fax:</strong> <a href="tel:3129269332">312-926-9332</a></li>
+                    </ul>
+                </ul>
+            </section>
 
-<h2>Team Rooms</h2>
-        <ul>
-    <li><strong>Windows Room:</strong> <a href="tel:3129266691">312-926-6691</a></li>
-    <li><strong>MICU:</strong> <a href="tel:3129261563">312-926-1563</a></li>
-    <li><strong>CCU:</strong> <a href="tel:3129260783">312-926-0783</a></li>
-    <li><strong>General Cardiology:</strong> <a href="tel:3126941437">312-694-1437</a></li>
-    <li><strong>Hepatology:</strong> <a href="tel:3129265442">312-926-5442</a></li>
-    <li><strong>Oncology- Red:</strong> <a href="tel:3124721539">312-472-1539</a></li>
-    <li><strong>Oncology - Green (incorrect):</strong> <a href="tel:3124721439">312-472-1439</a></li>
-        </ul>
-
-<h2>Pharmacy</h2>
-        <ul>
-    <li><strong>Outpatient - Walgreen's:</strong> <a href="tel:3129511084">312-951-1084</a></li>
-    <li><strong>Outpatient - Walgreen's Fax:</strong> <a href="tel:3129511227">312-951-1227</a></li>
-    <li><strong>Inpatient Pharmacy:</strong> <a href="tel:3129265147">312-926-5147 (option 4)</a></li>
-    <li><strong>Prentice:</strong> <a href="tel:3124723790">312-472-3790</a></li>
-    <li><strong>General Cardiology:</strong> <a href="tel:3126941292">312-694-1292</a></li>
-    <li><strong>Hepatology:</strong> <a href="tel:3126941364">312-694-1364</a></li>
-    <li><strong>Oncology - Red:</strong> <a href="tel:3129268222">312-926-8222</a></li>
-    <li><strong>Oncology - Green (incorrect):</strong> <a href="tel:3129268222">312-926-8222</a></li>
-        </ul>
-
-<h2>Laboratory</h2>
-        <ul>
-    <li><strong>Specimen Receiving:</strong> <a href="tel:3129267970">312-926-7970</a></li>
-    <li><strong>ABG:</strong> <a href="tel:3129265174">312-926-5174</a></li>
-    <li><strong>Autopsy:</strong> <a href="tel:3129263212">312-926-3212</a></li>
-    <li><strong>Blood Bank:</strong> <a href="tel:3129262513">312-926-2513</a></li>
-    <li><strong>Chemistry:</strong> <a href="tel:3129267536">312-926-7536</a></li>
-    <li><strong>Flow Cytometry:</strong> <a href="tel:3129267360">312-926-7360</a></li>
-    <li><strong>Heme/Cell Count:</strong> <a href="tel:3129263200">312-926-3200</a></li>
-    <li><strong>Chemistry:</strong> <a href="tel:3129267536">312-926-7536</a></li>
-    <li><strong>Hemostasis:</strong> <a href="tel:3129262428">312-926-2428</a></li>
-    <li><strong>Micro:</strong> <a href="tel:3129263202">312-926-3202</a></li>
-    <li><strong>Molecular:</strong> <a href="tel:3129264384">312-926-4384</a></li>
-    <li><strong>Pathology:</strong> <a href="tel:3129263211">312-926-3211</a></li>
-    <li><strong>BmBx:</strong> <a href="tel:3129268501">312-926-8501</a></li>
-    <li><strong>Send-out:</strong> <a href="tel:3129261200">312-926-1200</a></li>
-</ul>
-
-<h2>Radiology</h2>
-        <ul>
- <li><strong>After Hours Reading:</strong> <a href="tel:3129267038">312-926-7038</a></li>
-    <li><strong>General Radiology:</strong> <a href="tel:3129265105">312-926-5105</a></li>
-    <li><strong>MSK Reading:</strong> <a href="tel:3129267218">312-926-7218</a></li>
-    <li><strong>Prentice XR:</strong> <a href="tel:3124720532">312-472-0532</a></li>
-    <li><strong>CT Order/Protocol:</strong> <a href="tel:3129265314">312-926-5314</a></li>
-    <li><strong>Prentice CT:</strong> <a href="tel:3124720559">312-472-0559</a></li>
-    <li><strong>Body Reading:</strong> <a href="tel:3129265894">312-926-5894</a></li>
-    <li><strong>Chest Reading:</strong> <a href="tel:3129265204">312-926-5204</a></li>
-    <li><strong>MSK Reading:</strong> <a href="tel:3129267034">312-926-7034</a></li>
-    <li><strong>ENT Reading:</strong> <a href="tel:3129262042">312-926-2042</a></li>
-    <li><strong>MRI Order/Protocol:</strong> <a href="tel:3129264333">312-926-4333</a></li>
-    <li><strong>MRI Fax:</strong> <a href="tel:3129266452">312-926-6452</a></li>
-    <li><strong>MRI Prentice MR:</strong> <a href="tel:3124720556">312-472-0556</a></li>
-    <li><strong>MRI Body Reading:</strong> <a href="tel:3129261810">312-926-1810</a></li>
-    <li><strong>MRI Cardiac Reading:</strong> <a href="tel:3129261838">312-926-1838</a></li>
-    <li><strong>MRI Neuro Reading:</strong> <a href="tel:3129264408">312-926-4408</a></li>
-    <li><strong>Interventional Radiology:</strong> <a href="tel:3129265200">312-926-5200</a></li>
-    <li><strong>Nuclear:</strong> <a href="tel:3129262320">312-926-2320</a></li>
-    <li><strong>Ultrasound Ordering:</strong> <a href="tel:3129267032">312-926-7032</a></li>
-    <li><strong>Ultrasound Reading:</strong> <a href="tel:3129262761">312-926-2761</a></li>
-    <li><strong>Duplex:</strong> <a href="tel:3129265809">312-926-5809</a></li>
-    <li><strong>PETCT:</strong> <a href="tel:3129263762">312-926-3762</a></li>
-        </ul>
-
-<h2>Services</h2>
-        <ul>
- <li><strong>Cardiac Cath - General:</strong> 8 Flr <a href="tel:3129265135">312-926-5135</a></li>
-    <li><strong>Cardiac Cath Back Line:</strong> <a href="tel:3129265176">312-926-5176</a></li>
-    <li><strong>Cardiac Nuc Stress:</strong> 8 Flr <a href="tel:3129267486">312-926-7486</a></li>
-    <li><strong>Echo (rest/stress):</strong> 8 Flr <a href="tel:3129262629">312-926-2629</a></li>
-    <li><strong>Holter:</strong> <a href="tel:3126954965">312-695-4965</a></li>
-    <li><strong>Coumadin Clinic:</strong> <a href="tel:3126954965">312-695-4965</a></li>
-    <li><strong>TPN:</strong> Pager 5-7161</li>
-    <li><strong>Respiratory:</strong> Pager "resp"</li>
-    <li><strong>PFT Lab:</strong> <a href="tel:3129264194">312-926-4194</a></li>
-    <li><strong>Medicar:</strong> <a href="tel:3129269883">312-926-9883</a></li>
-    <li><strong>RIC (PM&R consult):</strong> <a href="tel:3122381058">312-238-1058</a></li>
-    <li><strong>PT (Weekends):</strong> Pager 5-7685</li>
-    <li><strong>Ballert:</strong> <a href="tel:3127874400">312-787-4400</a></li>
-    <li><strong>Courier:</strong> <a href="tel:8558445227">855-844-5227</a></li>
-    <li><strong>Weekend SW:</strong> Pager 5-3025</li>
-    <li><strong>Environmental Svs:</strong> <a href="tel:3126957271">312-695-7271</a></li>
-    <li><strong>Maintenance:</strong> <a href="tel:3129268888">312-926-8888</a></li>
-    <li><strong>Medical Records:</strong> <a href="tel:3129263376">312-926-3376</a></li>
-    <li><strong>Imaging Disk Request:</strong> <a href="tel:3129265510">312-926-5510</a></li>
-</ul>
-        </ul>
-            </ul> </section>
-
-   <section id="vaPhonebookSection" style="display: none;">
-            <h1>VA Phonebook</h1>
-            
-    <ul>
-        <li><strong>JBVAMC Test 1:</strong> 312-569-8387</li>
-        <li><strong>JBVAMC Test 2:</strong> 312-569-8387</li>
-        <li><strong>JBVAMC Test 3:</strong> 312-569-8387</li>
-        <li><strong>JBVAMC Test 4:</strong> 312-569-8387</li>
-        <li><strong>JBVAMC Test 5:</strong> 312-569-8387</li>    </ul> </section>
-
-  <!-- Toggle Buttons -->
-<div class="container">
-    <button id="toggleView">Go to NMH Phonebook</button>
-    <button id="toggleDirectory">Go to VA Phonebook</button>
-</div>
+            <!-- VA Phonebook -->
+            <section id="vaPhonebookSection" style="display: none;">
+                <h1>VA Phonebook</h1>
+                <ul>
+                    <li><strong>JBVAMC Test 1:</strong> <a href="tel:3125698387">312-569-8387</a></li>
+                    <li><strong>JBVAMC Test 2:</strong> <a href="tel:3125698387">312-569-8387</a></li>
+                </ul>
+            </section>
+        </section>
+    </div>
 
     <script src="script.js"></script>
-
 </body>
 </html>
+
 
