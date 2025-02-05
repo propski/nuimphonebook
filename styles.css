@@ -308,14 +308,18 @@ button:hover {
 /* Adjust Toggle Buttons */
 #toggleView,
 #toggleDirectory {
-    text-align: center;
-    font-weight: bold;
+    display: block;
+    width: 90%;
+    margin: 10px auto;
+    padding: 12px 20px;
+    font-size: 18px;
     background: #C2ABD0;
     color: #3D0075;
     border: 2px solid #A58BCC;
-    padding: 12px 20px;
     border-radius: 10px;
-    transition: background 0.3s, transform 0.2s;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s ease-in-out, transform 0.2s;
 }
 
 #toggleView:hover,
