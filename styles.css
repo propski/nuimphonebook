@@ -4,7 +4,7 @@ html, body {
     background: #E2D6EF;  /* Light muted lavender */
     color: #333333;  /* Dark gray for readability */
     font-family: 'Arial', sans-serif;
-    text-align: center;
+    text-align: left;
     margin: 0;
     padding: 0;
 }
@@ -167,7 +167,21 @@ ul#phonebook li {
     border-bottom: 1px solid #C8B0DD;
     font-size: 18px;
     text-align: left; /* ✅ Ensures proper text alignment */
+    width: 100%; /* ✅ Makes sure the text spans full width */
 }
+
+ul#phonebook li a {
+    text-decoration: none; /* ✅ Removes underline */
+    color: #3D0075; /* ✅ Matches theme */
+    font-weight: bold;
+    flex-grow: 1; /* ✅ Ensures numbers align correctly */
+    text-align: right; /* ✅ Aligns numbers to the right */
+}
+
+ul#phonebook li a:hover {
+    color: #5A268D; /* ✅ Slightly lighter purple when hovered */
+}
+
 
 
 ul#phonebook li:last-child {
@@ -201,8 +215,9 @@ ul#phonebook::-webkit-scrollbar-thumb:hover {
 /* Responsive Optimization for Mobile */
 @media (max-width: 600px) {
     ul#phonebook {
-        max-height: 40vh; 
-        padding: 8px; 
+        max-height: 50vh; 
+        padding: 8px;
+        width: 100%;
     }
 }
 /* Buttons */
