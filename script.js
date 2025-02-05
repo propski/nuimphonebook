@@ -23,38 +23,28 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-// Function to simulate making a call
-function callNumber() {
-    let number = document.getElementById("phoneNumber").value.trim();
-    console.log("Dialing: " + number); // Debugging log
+    // Function to simulate making a call
+    function callNumber() {
+        let number = document.getElementById("phoneNumber").value.trim();
+        console.log("Dialing: " + number); // Debugging log
 
-    if (number) {
-        // Create a temporary <a> tag to trigger the phone dialer
-        let dialLink = document.createElement("a");
-        dialLink.href = "tel:" + number;
-        dialLink.click();
-    } else {
-        alert("Please enter a number first.");
+        if (number) {
+            // Create a temporary <a> tag to trigger the phone dialer
+            let dialLink = document.createElement("a");
+            dialLink.href = "tel:" + number;
+            dialLink.click();
+        } else {
+            alert("Please enter a number first.");
+        }
     }
-}
 
-
-
-
-    // Attach event listeners to dial pad buttons dynamically
-    let buttons = document.querySelectorAll(".dial-pad button");
-    buttons.forEach(button => {
-        button.addEventListener("click", function () {
-            let value = this.textContent.trim();
-            if (value === "⌫") {
-                clearNumber();
-            } else if (value === "📞") {
-                callNumber();
-            } else {
-                addNumber(value);
-            }
-        });
-    });
+    // Attach event listener to Call button
+    let callButton = document.getElementById("callButton");
+    if (callButton) {
+        callButton.addEventListener("click", callNumber);
+    } else {
+        console.error("callButton not found.");
+    }
 
     // Function to toggle between Dialer and Phonebook sections
     function toggleView() {
@@ -80,8 +70,11 @@ function callNumber() {
         }
     }
 
-    // Attach event listener to toggle button
-    document.getElementById("toggleView").addEventListener("click", toggleView);
+    // Attach event listener to Toggle button
+    let toggleButton = document.getElementById("toggleView");
+    if (toggleButton) {
+        toggleButton.addEventListener("click", toggleView);
+    }
 
     // Function to filter search results
     function searchNames() {
@@ -95,5 +88,8 @@ function callNumber() {
     }
 
     // Attach event listener to search input
-    document.getElementById("searchInput").addEventListener("keyup", searchNames);
+    let searchInput = document.getElementById("searchInput");
+    if (searchInput) {
+        searchInput.addEventListener("keyup", searchNames);
+    }
 });
