@@ -171,3 +171,9 @@ button:hover {
         font-size: 16px;
     }
 }
+
+/* Debugging: Highlight buttons */
+button {
+    outline: 2px solid red !important;
+}
+
