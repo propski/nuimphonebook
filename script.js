@@ -171,11 +171,11 @@ function callNumber() {
         if (dialer.style.display === "none") {
             dialer.style.display = "block";
             database.style.display = "none";
-            button.innerText = "Go to Phonebook";
+            button.innerText = "NMH Phonebook";
         } else {
             dialer.style.display = "none";
             database.style.display = "block";
-            button.innerText = "Go to Dialer";
+            button.innerText = "NMH Dialer";
         }
     }
 
