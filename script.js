@@ -42,16 +42,28 @@ document.addEventListener("DOMContentLoaded", function () {
     // Attach event listeners for dial pad buttons
     document.querySelectorAll(".dial-pad button").forEach(button => {
         button.addEventListener("click", function () {
-            let value = this.innerText;
-            if (value === "⌫") {
-                clearNumber();
-            } else if (value === "📞 Call") {
-                callNumber();
-            } else {
+            let value = this.dataset.number;
+            if (value) {
                 addNumber(value);
             }
         });
     });
+
+    // Attach event listener to Call button
+    let callButton = document.getElementById("callButton");
+    if (callButton) {
+        callButton.addEventListener("click", callNumber);
+    } else {
+        console.error("callButton not found.");
+    }
+
+    // Attach event listener to Clear button
+    let clearButton = document.getElementById("clearButton");
+    if (clearButton) {
+        clearButton.addEventListener("click", clearNumber);
+    } else {
+        console.error("clearButton not found.");
+    }
 
     // Function to toggle between Dialer and Phonebook sections
     function toggleView() {
@@ -81,6 +93,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let toggleButton = document.getElementById("toggleView");
     if (toggleButton) {
         toggleButton.addEventListener("click", toggleView);
+    } else {
+        console.error("toggleView button not found.");
     }
 
     // Function to filter search results
@@ -106,4 +120,5 @@ document.addEventListener("DOMContentLoaded", function () {
             event.preventDefault();
         }
     }, { passive: false });
+
 });
