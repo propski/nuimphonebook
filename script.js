@@ -99,4 +99,3 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault(); // Disable double-tap zoom
     }, { passive: false });
 });
-
