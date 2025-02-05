@@ -50,26 +50,22 @@ function addNumber(num) {
     let inputField = document.getElementById("phoneNumber");
 
     let nmhPrefixMapping = { "6": "312-926", "5": "312-695", "4": "312-694", "2": "312-472" };
-    let vaPrefixMapping = { "5": "312-569", "4": "312-469" }; // ✅ Updated VA mode to only use 5 and 4
+    let vaPrefixMapping = { "5": "312-569", "4": "312-469" };
 
-    let prefixMapping = isVA ? vaPrefixMapping : nmhPrefixMapping; // ✅ Choose NMH or VA prefix set
+    let prefixMapping = isVA ? vaPrefixMapping : nmhPrefixMapping; // ✅ Select NMH or VA mode
 
-    if (isVA) {
-        // ✅ In VA mode, allow only "5-XXXX" and "4-XXXX"
-        if (["5", "4"].includes(num) && inputField.value.length === 0) {
-            inputField.value = num + "-";
-        } else if (inputField.value.length > 0) {
-            inputField.value += num;
-        }
-    } else {
-        // ✅ In NMH mode, allow "2-XXXX", "4-XXXX", "5-XXXX", and "6-XXXX"
-        if (["2", "4", "5", "6"].includes(num) && inputField.value.length === 0) {
-            inputField.value = num + "-";
-        } else {
-            inputField.value += num;
+    // ✅ If it's the first digit, check if it should apply a prefix shortcut
+    if (inputField.value.length === 0) {
+        if ((isVA && (num === "4" || num === "5")) || (!isVA && ["2", "4", "5", "6"].includes(num))) {
+            inputField.value = num + "-"; // ✅ Auto-format for VA/NMH prefixes
+            return;
         }
     }
+
+    // ✅ Allow full manual entry (e.g., "123-456-7890")
+    inputField.value += num;
 }
+
 
 // 📌 Function to make a call
 function callNumber() {
