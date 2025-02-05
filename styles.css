@@ -60,8 +60,8 @@ input:focus {
     padding: 20px;
     font-size: 32px;
     font-weight: bold;
-    background: #5A268D;  /* Deep Royal Purple */
-    color: #FFFFFF;
+    background: #C2ABD0;  /* Deep Royal Purple */
+    color: #3D0075;
     border: 2px solid #A58BCC;  /* Light Lavender Border */
     border-radius: 50%;  /* Circular buttons like iPhone */
     cursor: pointer;
@@ -75,13 +75,13 @@ input:focus {
 }
 
 .dial-pad button:hover {
-    background: #8360B9; /* Lighter Violet */
-    border-color: #C8B0DD; /* Slightly brighter border on hover */
+    background: #A58BCC; /* Lighter Violet */
+    border-color: #8360B9; /* Slightly brighter border on hover */
     transform: scale(1.05); /* Slight pop effect */
 }
 
 .dial-pad button:active {
-    background: #3D0075; /* Darker press effect */
+    background: #8360B9; /* Darker press effect */
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
