@@ -11,15 +11,12 @@ html, body {
 
 /* Fullscreen Mobile Fix */
 html, body {
-    overscroll-behavior: none;
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden; /* Prevents browser scrolling */
+
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     user-select: none;
     touch-action: none;
-    position: fixed;
+
 }
 
 /* Container Styling */
@@ -156,6 +153,10 @@ ul#phonebook {
     scrollbar-width: thin;
     scrollbar-color: #A58BCC #E2D6EF;
     -webkit-overflow-scrolling: touch;
+    user-select: text; /* ✅ Allows selecting text */
+    -webkit-user-select: text;
+}
+
 }
 
 ul#phonebook li {
