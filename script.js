@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let inputField = document.getElementById("phoneNumber");
 
         let nmhPrefixMapping = { "6": "312-926", "5": "312-695", "4": "312-694", "2": "312-472" };
-        let vaPrefixMapping = { "6": "312-822", "5": "312-825", "4": "312-827", "2": "312-828" };
+        let vaPrefixMapping = { "5": "312-569", "4": "312-469" };
 
         let prefixMapping = isVA ? vaPrefixMapping : nmhPrefixMapping;
 
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let number = inputField.value.trim();
 
         let nmhPrefixMapping = { "6": "312-926", "5": "312-695", "4": "312-694", "2": "312-472" };
-        let vaPrefixMapping = { "52": "312-569", "42": "312-469" };
+        let vaPrefixMapping = { "5": "312-569", "4": "312-469" };
 
         let prefixMapping = isVA ? vaPrefixMapping : nmhPrefixMapping;
         let pattern = /^([2564])-(\d{4})$/;
