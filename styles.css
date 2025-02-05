@@ -7,16 +7,16 @@ html, body {
     text-align: left;
     margin: 0;
     padding: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
 }
 
 /* Fullscreen Mobile Fix */
 html, body {
-
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     user-select: none;
-    touch-action: none;
-
 }
 
 /* Container Styling */
@@ -24,7 +24,7 @@ html, body {
     width: 90%;
     max-width: 450px;
     margin: 30px auto;
-    background: #FFFFFF; /* Clean white background for contrast */
+    background: #FFFFFF;
     padding: 25px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
@@ -34,19 +34,15 @@ html, body {
 /* Header Text */
 h1 {
     font-size: 22px;
-    color: #3D0075; /* Deep purple for branding */
+    color: #3D0075;
 }
 
 h2 {
     font-size: 20px;
-    margin-left: 0;
-    padding-left: 0; 
     color: #5A268D;
     font-weight: bold;
-    text-align: left; 
+    text-align: left;
 }
-
-
 
 /* Input Fields */
 input {
@@ -55,7 +51,7 @@ input {
     font-size: 20px;
     text-align: center;
     margin: 15px 0;
-    border: 2px solid #A58BCC; /* Soft lavender border */
+    border: 2px solid #A58BCC;
     border-radius: 8px;
     background: #FFFFFF;
     color: #3D0075;
@@ -63,7 +59,7 @@ input {
 }
 
 input:focus {
-    border-color: #8360B9; /* Muted violet */
+    border-color: #8360B9;
 }
 
 /* Dial Pad Styling */
@@ -81,10 +77,10 @@ input:focus {
     padding: 20px;
     font-size: 32px;
     font-weight: bold;
-    background: #C2ABD0;  /* Deep Royal Purple */
+    background: #C2ABD0;
     color: #3D0075;
-    border: 2px solid #A58BCC;  /* Light Lavender Border */
-    border-radius: 50%;  /* Circular buttons like iPhone */
+    border: 2px solid #A58BCC;
+    border-radius: 50%;
     cursor: pointer;
     width: 80px;
     height: 80px;
@@ -92,39 +88,23 @@ input:focus {
     justify-content: center;
     align-items: center;
     transition: background 0.3s ease-in-out, transform 0.2s;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);  /* Soft shadow for depth */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .dial-pad button:hover {
-    background: #A58BCC; /* Lighter Violet */
-    border-color: #8360B9; /* Slightly brighter border on hover */
-    transform: scale(1.05); /* Slight pop effect */
-}
-
-.dial-pad button:active {
-    background: #8360B9; /* Darker press effect */
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-/* Special styling for Call and Clear buttons */
-#callButton {
-    background: #C2ABD0; /* Soft Lavender */
-    color: #3D0075; /* Deep Purple Text */
-    border: 2px solid #A58BCC;
-    font-size: 22px;
-    font-weight: bold;
-    padding: 12px 20px;
-    border-radius: 10px;
-    transition: background 0.3s, transform 0.2s;
-}
-
-#callButton:hover {
     background: #A58BCC;
+    border-color: #8360B9;
     transform: scale(1.05);
 }
 
-#clearButton {
-    background: #C2ABD0; /* Soft Lavender */
+.dial-pad button:active {
+    background: #8360B9;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Call and Clear Buttons */
+#callButton, #clearButton {
+    background: #C2ABD0;
     color: #3D0075;
     border: 2px solid #A58BCC;
     font-size: 22px;
@@ -134,16 +114,15 @@ input:focus {
     transition: background 0.3s, transform 0.2s;
 }
 
-#clearButton:hover {
+#callButton:hover, #clearButton:hover {
     background: #A58BCC;
     transform: scale(1.05);
 }
 
-
 /* Phonebook List Styling */
 ul#phonebook {
     list-style-type: none;
-    padding: 0; /* ✅ Ensures proper alignment */
+    padding: 0;
     margin: 0;
     max-height: 60vh;
     overflow-y: auto;
@@ -153,53 +132,44 @@ ul#phonebook {
     scrollbar-width: thin;
     scrollbar-color: #A58BCC #E2D6EF;
     -webkit-overflow-scrolling: touch;
-    user-select: text; /* ✅ Allows selecting text */
-    -webkit-user-select: text;
-}
-
+    user-select: text;
 }
 
 ul#phonebook li {
     display: flex;
-    justify-content: space-between; /* ✅ Ensures full justification */
-    align-items: center; /* ✅ Keeps text vertically aligned */
-    padding: 12px 15px; /* ✅ Balanced spacing */
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
     border-bottom: 1px solid #C8B0DD;
     font-size: 18px;
-    text-align: left; /* ✅ Ensures proper text alignment */
-    width: 100%; /* ✅ Makes sure the text spans full width */
+    text-align: left;
+    width: 100%;
 }
 
 ul#phonebook li a {
-    text-decoration: none; /* ✅ Removes underline */
-    color: #3D0075; /* ✅ Matches theme */
-    font-weight: bold;
-    flex-grow: 1; /* ✅ Ensures numbers align correctly */
-    text-align: right; /* ✅ Aligns numbers to the right */
+    text-decoration: none;
+    color: #3D0075;
+    font-weight: normal; /* Makes phone numbers not bold */
+    flex-grow: 1;
+    text-align: right;
 }
 
 ul#phonebook li a:hover {
-    color: #5A268D; /* ✅ Slightly lighter purple when hovered */
-}
-
-
-
-ul#phonebook li:last-child {
-    border-bottom: none;
+    color: #5A268D;
 }
 
 ul#phonebook li strong {
-    color: #3D0075; 
+    color: #3D0075;
+    font-weight: bold;
 }
 
-
-/* Style the scrollbar (for Chrome, Edge, Safari) */
+/* Scrollbar Styling */
 ul#phonebook::-webkit-scrollbar {
-    width: 6px; 
+    width: 6px;
 }
 
 ul#phonebook::-webkit-scrollbar-track {
-    background: #E2D6EF; 
+    background: #E2D6EF;
     border-radius: 10px;
 }
 
@@ -209,27 +179,32 @@ ul#phonebook::-webkit-scrollbar-thumb {
 }
 
 ul#phonebook::-webkit-scrollbar-thumb:hover {
-    background: #8360B9; 
+    background: #8360B9;
 }
 
-/* Responsive Optimization for Mobile */
-@media (max-width: 600px) {
-    ul#phonebook {
-        max-height: 50vh; 
-        padding: 8px;
-        width: 100%;
-    }
+/* Phonebook Sections */
+#phonebook-container {
+    text-align: left;
+    width: 100%;
 }
-/* Buttons */
+
+#vaPhonebookSection {
+    display: none;
+}
+
+/* Button Styling */
 button {
-    margin-top: 15px;
+    display: block;
+    width: 90%;
+    margin: 10px auto;
     padding: 12px 20px;
     font-size: 18px;
-    background: #3D0075; /* Deep Purple */
-    color: #FFFFFF;
+    background: #5A268D;
+    color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    text-align: center;
     transition: background 0.3s ease-in-out;
 }
 
@@ -237,22 +212,26 @@ button:hover {
     background: #8360B9;
 }
 
-/* Styling for Toggle Button */
-#toggleView {
-    background: #C2ABD0; 
-    color: #3D0075;
-    font-weight: bold;
-    border: 2px solid #A58BCC;
+/* Toggle Buttons */
+#toggleView, #toggleDirectory {
+    display: block;
+    width: 90%;
+    margin: 10px auto;
     padding: 12px 20px;
+    font-size: 18px;
+    background: #C2ABD0;
+    color: #3D0075;
+    border: 2px solid #A58BCC;
     border-radius: 10px;
-    transition: background 0.3s, transform 0.2s;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s ease-in-out, transform 0.2s;
 }
 
-#toggleView:hover {
+#toggleView:hover, #toggleDirectory:hover {
     background: #A58BCC;
     transform: scale(1.05);
 }
-
 
 /* Responsive Design for Mobile */
 @media (max-width: 600px) {
@@ -270,65 +249,13 @@ button:hover {
         font-size: 18px;
     }
 
+    ul#phonebook {
+        max-height: 50vh;
+        padding: 8px;
+        width: 100%;
+    }
+
     ul#phonebook li {
         font-size: 16px;
     }
-}
-
-/* Button Styling */
-button {
-    display: block;
-    width: 90%;
-    margin: 10px auto;
-    padding: 12px 20px;
-    font-size: 18px;
-    background: #5A268D;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    text-align: center;
-}
-
-button:hover {
-    background: #8360B9;
-}
-
-/* Ensure Containers Are Centered */
-.container {
-    text-align: center;
-}
-
-/* Phonebook Sections */
-#phonebook-container {
-    text-align: left;
-    width: 100%;
-}
-
-#vaPhonebookSection {
-    display: none;
-}
-
-
-/* Adjust Toggle Buttons */
-#toggleView,
-#toggleDirectory {
-    display: block;
-    width: 90%;
-    margin: 10px auto;
-    padding: 12px 20px;
-    font-size: 18px;
-    background: #C2ABD0;
-    color: #3D0075;
-    border: 2px solid #A58BCC;
-    border-radius: 10px;
-    cursor: pointer;
-    text-align: center;
-    transition: background 0.3s ease-in-out, transform 0.2s;
-}
-
-#toggleView:hover,
-#toggleDirectory:hover {
-    background: #A58BCC;
-    transform: scale(1.05);
 }
