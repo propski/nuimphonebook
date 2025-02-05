@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="NUIM Phonebook">
-<link rel="apple-touch-icon" href="icon.png">
-<link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-title" content="NUIM Phonebook">
+    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="manifest" href="manifest.json">
 
     <title>NMH Phonebook</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <!-- Phone Dialer Section -->
+        <!-- NMH Phone Dialer Section -->
         <section id="dialer-section">
             <input type="text" id="phoneNumber" placeholder="Enter number" readonly>
             <div class="dial-pad">
@@ -34,11 +34,12 @@
         </section>
 
 
-        <!-- Database Section -->
-        <section id="database-section" style="display: none;">
+        <!-- NMH Phonebook Directory -->
+        <section id="phonebookSection">
             <h1>NMH Phonebook</h1>
             <input type="text" id="searchInput" placeholder="Search for names or numbers..." onkeyup="searchNames()">
             <ul id="phonebook">
+         
 <h2>General</h2>
         <ul>
   <li><strong>Cardiac Arrest:</strong> <a href="tel:3126955555">312-695-5555</a></li>
@@ -164,32 +165,25 @@
 </ul>
         </ul>
             </ul>
-        </section>
-    <script src="script.js"></script>
-        
-        <!-- Toggle Button -->
-        <button id="toggleView" onclick="toggleView()">NMH Phonebook</button>
 
-    <!-- Toggle Button -->
-<button id="toggleDirectory">VA Phonebook</button>
-
-            </div>
-
-<!-- Existing Phonebook Section -->
-<div id="phonebookSection">
-    <!-- Your existing phonebook content -->
-</div>
-
-<!-- VA Phonebook Section -->
-<div id="vaPhonebookSection" style="display: none;">
-    <h2>VA Phonebook </h2>
+   <section id="vaPhonebookSection" style="display: none;">
+            <h1>VA Phonebook</h1>
+            
     <ul>
         <li><strong>JBVAMC Test 1:</strong> 312-569-8387</li>
         <li><strong>JBVAMC Test 2:</strong> 312-569-8387</li>
         <li><strong>JBVAMC Test 3:</strong> 312-569-8387</li>
         <li><strong>JBVAMC Test 4:</strong> 312-569-8387</li>
-        <li><strong>JBVAMC Test 5:</strong> 312-569-8387</li>    </ul>
-</div>
+        <li><strong>JBVAMC Test 5:</strong> 312-569-8387</li>    </ul> </section>
+
+  <!-- Toggle Buttons -->
+        <button id="toggleView" onclick="toggleView()">NMH Phonebook</button>
+        <button id="toggleDirectory">Switch to VA Phonebook</button>
+
+    </div>
+
+    <script src="script.js"></script>
 
 </body>
 </html>
+
