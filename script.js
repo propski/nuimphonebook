@@ -31,19 +31,27 @@ document.addEventListener("DOMContentLoaded", function () {
         if (number) {
             let dialLink = document.createElement("a");
             dialLink.href = "tel:" + number;
+            document.body.appendChild(dialLink);
             dialLink.click();
+            document.body.removeChild(dialLink);
         } else {
             alert("Please enter a number first.");
         }
     }
 
-    // Attach event listener to Call button
-    let callButton = document.getElementById("callButton");
-    if (callButton) {
-        callButton.addEventListener("click", callNumber);
-    } else {
-        console.error("callButton not found.");
-    }
+    // Attach event listeners for dial pad buttons
+    document.querySelectorAll(".dial-pad button").forEach(button => {
+        button.addEventListener("click", function () {
+            let value = this.innerText;
+            if (value === "⌫") {
+                clearNumber();
+            } else if (value === "📞 Call") {
+                callNumber();
+            } else {
+                addNumber(value);
+            }
+        });
+    });
 
     // Function to toggle between Dialer and Phonebook sections
     function toggleView() {
@@ -98,5 +106,4 @@ document.addEventListener("DOMContentLoaded", function () {
             event.preventDefault();
         }
     }, { passive: false });
-
 });
