@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NMH Phone Numbers</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>NMH Phone Numbers Directory</h1>
+        <input type="text" id="searchInput" placeholder="Search for names or numbers..." onkeyup="searchNames()">
+        
+        <h2>General</h2>
+        <ul id="phonebook">
+            <li><strong>Cardiac Arrest:</strong> 5-5555</li>
+            <li><strong>IT Helpdesk:</strong> 6-HELP</li>
+            <li><strong>NMFF Clinic:</strong> 5-8630</li>
+            <li><strong>Bed Assignment:</strong> 6-2051</li>
+            <li><strong>PTC:</strong> 6-7647</li>
+            <li><strong>External Transfer:</strong> 6-3321</li>
+            <li><strong>Physician Referral Svcs:</strong> 6-8400</li>
+        </ul>
+
+        <h2>Medicine Floors</h2>
+        <ul>
+            <li><strong>MICU:</strong> 6-5140</li>
+            <li><strong>Charge RN:</strong> 6-5127</li>
+            <li><strong>CCU:</strong> 6-5172</li>
+            <li><strong>Cardiology:</strong> 4-1292</li>
+            <li><strong>ER:</strong> 6-8222</li>
+        </ul>
+
+        <h2>Laboratory</h2>
+        <ul>
+            <li><strong>Specimen Receiving:</strong> 6-7970</li>
+            <li><strong>Blood Bank:</strong> 6-2513</li>
+            <li><strong>Chemistry:</strong> 6-7536</li>
+            <li><strong>Pathology:</strong> 6-3211</li>
+        </ul>
+
+        <h2>Radiology</h2>
+        <ul>
+            <li><strong>After Hours Reading:</strong> 6-7038</li>
+            <li><strong>General Radiology:</strong> 6-5105</li>
+            <li><strong>CT Order/Protocol:</strong> 6-5314</li>
+            <li><strong>Chest Reading:</strong> 6-5204</li>
+        </ul>
+    </div>
+
+    <script>
+        function searchNames() {
+            let input = document.getElementById("searchInput").value.toLowerCase();
+            let items = document.querySelectorAll("#phonebook li");
+
+            items.forEach((li) => {
+                let text = li.textContent.toLowerCase();
+                if (text.includes(input)) {
+                    li.style.display = "block";
+                } else {
+                    li.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
