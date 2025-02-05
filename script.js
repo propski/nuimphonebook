@@ -1,6 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ JavaScript Loaded Successfully");
 
+    document.addEventListener("DOMContentLoaded", function () {
+    window.scrollTo(0, 1); // Pushes the address bar out of view on load
+    window.addEventListener("load", function() {
+        setTimeout(function() { window.scrollTo(0, 1); }, 0);
+    });
+});
+
     // Function to add numbers to the input field
 function addNumber(num) {
     let inputField = document.getElementById("phoneNumber");
