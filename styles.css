@@ -146,14 +146,15 @@ ul#phonebook {
 }
 
 ul#phonebook li {
-    padding: 12px 15px; /* ✅ Adjust padding for readability */
+    display: flex;
+    justify-content: space-between; /* ✅ Ensures full justification */
+    align-items: center; /* ✅ Keeps text vertically aligned */
+    padding: 12px 15px; /* ✅ Balanced spacing */
     border-bottom: 1px solid #C8B0DD;
     font-size: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start; /* ✅ Ensures left alignment */
-    text-align: left; /* ✅ Consistency */
+    text-align: left; /* ✅ Ensures proper text alignment */
 }
+
 
 ul#phonebook li:last-child {
     border-bottom: none;
