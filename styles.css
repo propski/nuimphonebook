@@ -123,7 +123,7 @@ input:focus {
 ul#phonebook {
     list-style-type: none;
     padding: 10px;
-    max-height: 50vh; /* ✅ Uses 50% of screen height dynamically */
+    max-height: 40vh; /* ✅ Uses 50% of screen height dynamically */
     overflow-y: auto; /* ✅ Enables scrolling */
     border: 1px solid #A58BCC; /* ✅ Soft lavender border */
     border-radius: 8px;
