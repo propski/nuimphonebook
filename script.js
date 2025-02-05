@@ -2,15 +2,16 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ JavaScript Loaded Successfully");
 
     // Function to add numbers to the input field
-    function addNumber(num) {
-        console.log("Button clicked: " + num);
-        let inputField = document.getElementById("phoneNumber");
-        if (inputField) {
-            inputField.value += num;
-        } else {
-            console.error("❌ phoneNumber input field not found.");
-        }
+function addNumber(num) {
+    let inputField = document.getElementById("phoneNumber");
+
+    // Auto-insert "-" if the first number is 2, 4, 5, or 6
+    if (["2", "4", "5", "6"].includes(num) && inputField.value.length === 0) {
+        inputField.value = num + "-"; // Ensures correct format
+    } else {
+        inputField.value += num;
     }
+}
 
     // Function to clear the last entered digit
     function clearNumber() {
@@ -28,6 +29,8 @@ function callNumber() {
     let inputField = document.getElementById("phoneNumber");
     let number = inputField.value.trim();
 
+    console.log("Original Input: " + number); // Debugging log
+
     // Define prefix mapping
     let prefixMapping = {
         "6": "312-926",
@@ -36,30 +39,38 @@ function callNumber() {
         "2": "312-472"
     };
 
-    // Check if the entered number follows the format "X-XXXX"
+    // Check if the entered number follows "X-XXXX" format
     let pattern = /^([2564])-(\d{4})$/; // Matches "2-XXXX", "4-XXXX", "5-XXXX", or "6-XXXX"
 
     if (pattern.test(number)) {
         let matchedPrefix = number.match(pattern)[1]; // Extract first digit (2, 4, 5, or 6)
         let lastFourDigits = number.match(pattern)[2]; // Extract XXXX
-        number = `${prefixMapping[matchedPrefix]}-${lastFourDigits}`; // Convert to full number
-    }
+        number = `${prefixMapping[matchedPrefix]}-${lastFourDigits}`; // Converts to full number
 
-    console.log("Dialing: " + number); // Debugging log
-
-    if (number) {
-        let dialLink = document.createElement("a");
-        dialLink.href = "tel:" + number;
-        document.body.appendChild(dialLink);
-        dialLink.click();
-        document.body.removeChild(dialLink);
+        console.log("Formatted Number: " + number); // Debugging log
     } else {
-        alert("Please enter a valid number.");
+        console.log("No formatting applied. Using raw input.");
     }
+
+    // Ensure the number is not empty
+    if (!number) {
+        alert("❌ Please enter a valid number.");
+        return;
+    }
+
+    // Create a temporary <a> tag to trigger the phone dialer
+    let dialLink = document.createElement("a");
+    dialLink.href = "tel:" + number;
+    document.body.appendChild(dialLink);
+    dialLink.click();
+    document.body.removeChild(dialLink);
+
+    console.log("📞 Dialing: " + number); // Debugging log
 }
 
 
-    // ✅ Fix: Attach event listeners for dial pad buttons correctly
+
+    // Fix: Attach event listeners for dial pad buttons correctly
     document.querySelectorAll(".dial-pad button").forEach(button => {
         button.addEventListener("click", function () {
             let value = this.innerText.trim(); // ✅ Uses innerText instead of dataset
