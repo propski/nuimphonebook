@@ -23,9 +23,20 @@ html, body {
 
 /* Header Text */
 h1 {
-    font-size: 24px;
+    font-size: 30px;
     color: #3D0075; /* Deep purple for branding */
 }
+
+h2 {
+    font-size: 20px;
+    margin-left: 0;
+    padding-left: 0; 
+    color: #5A268D;
+    font-weight: bold;
+    text-align: left; 
+}
+
+
 
 /* Input Fields */
 input {
@@ -122,24 +133,26 @@ input:focus {
 /* Phonebook List Styling */
 ul#phonebook {
     list-style-type: none;
-    padding: 3px;
-    max-height: 40vh; /* ✅ Uses 50% of screen height dynamically */
-    overflow-y: auto; /* ✅ Enables scrolling */
-    border: 1px solid #A58BCC; /* ✅ Soft lavender border */
+    padding: 0; /* ✅ Ensures proper alignment */
+    margin: 0;
+    max-height: 40vh;
+    overflow-y: auto;
+    border: 1px solid #A58BCC;
     border-radius: 8px;
-    background: #FFFFFF; /* ✅ Clean white background */
-    scrollbar-width: thin; /* ✅ Optimize scrollbar for Firefox */
-    scrollbar-color: #A58BCC #E2D6EF; /* ✅ Custom scrollbar for Firefox */
-    -webkit-overflow-scrolling: touch; /* ✅ Smooth touch scrolling */
+    background: #FFFFFF;
+    scrollbar-width: thin;
+    scrollbar-color: #A58BCC #E2D6EF;
+    -webkit-overflow-scrolling: touch;
 }
 
-
 ul#phonebook li {
-    padding: 12px;
+    padding: 12px 15px; /* ✅ Adjust padding for readability */
     border-bottom: 1px solid #C8B0DD;
     font-size: 18px;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: flex-start; /* ✅ Ensures left alignment */
+    text-align: left; /* ✅ Consistency */
 }
 
 ul#phonebook li:last-child {
@@ -147,34 +160,34 @@ ul#phonebook li:last-child {
 }
 
 ul#phonebook li strong {
-    color: #3D0075; /* Deep purple */
+    color: #3D0075; 
 }
 
 
 /* Style the scrollbar (for Chrome, Edge, Safari) */
 ul#phonebook::-webkit-scrollbar {
-    width: 6px; /* ✅ Slim scrollbar */
+    width: 6px; 
 }
 
 ul#phonebook::-webkit-scrollbar-track {
-    background: #E2D6EF; /* ✅ Light purple scrollbar track */
+    background: #E2D6EF; 
     border-radius: 10px;
 }
 
 ul#phonebook::-webkit-scrollbar-thumb {
-    background: #A58BCC; /* ✅ Lavender scroll handle */
+    background: #A58BCC;
     border-radius: 10px;
 }
 
 ul#phonebook::-webkit-scrollbar-thumb:hover {
-    background: #8360B9; /* ✅ Darker purple when hovered */
+    background: #8360B9; 
 }
 
 /* Responsive Optimization for Mobile */
 @media (max-width: 600px) {
     ul#phonebook {
-        max-height: 60vh; /* ✅ Uses 60% of viewport height on mobile */
-        padding: 8px; /* ✅ Slightly smaller padding for smaller screens */
+        max-height: 60vh; 
+        padding: 8px; 
     }
 }
 /* Buttons */
@@ -196,7 +209,7 @@ button:hover {
 
 /* Styling for Toggle Button */
 #toggleView {
-    background: #C2ABD0; /* Soft Lavender */
+    background: #C2ABD0; 
     color: #3D0075;
     font-weight: bold;
     border: 2px solid #A58BCC;
