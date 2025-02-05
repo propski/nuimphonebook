@@ -44,4 +44,242 @@ h2 {
     text-align: left;
 }
 
-/* In
+/* Input Fields */
+input {
+    width: 90%;
+    padding: 12px;
+    font-size: 20px;
+    text-align: center;
+    margin: 15px 0;
+    border: 2px solid #A58BCC;
+    border-radius: 8px;
+    background: #FFFFFF;
+    color: #3D0075;
+    outline: none;
+}
+
+input:focus {
+    border-color: #8360B9;
+}
+
+/* Dial Pad Styling */
+.dial-pad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    justify-content: center;
+    padding: 15px;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.dial-pad button {
+    padding: 20px;
+    font-size: 32px;
+    font-weight: bold;
+    background: #C2ABD0;
+    color: #3D0075;
+    border: 2px solid #A58BCC;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dial-pad button:hover {
+    background: #A58BCC;
+    border-color: #8360B9;
+    transform: scale(1.05);
+}
+
+.dial-pad button:active {
+    background: #8360B9;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Call and Clear Buttons */
+#callButton, #clearButton {
+    background: #C2ABD0;
+    color: #3D0075;
+    border: 2px solid #A58BCC;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 10px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+#callButton:hover, #clearButton:hover {
+    background: #A58BCC;
+    transform: scale(1.05);
+}
+
+/* Phonebook List Styling */
+ul#phonebook {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    max-height: 60vh;
+    overflow-y: auto;
+    border: 1px solid #A58BCC;
+    border-radius: 8px;
+    background: #FFFFFF;
+    scrollbar-width: thin;
+    scrollbar-color: #A58BCC #E2D6EF;
+    -webkit-overflow-scrolling: touch;
+    user-select: text;
+}
+
+ul#phonebook li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid #C8B0DD;
+    font-size: 18px;
+    text-align: left;
+    width: 100%;
+}
+
+ul#phonebook li a {
+    text-decoration: none;
+    color: #3D0075;
+    font-weight: normal; /* Makes phone numbers not bold */
+    flex-grow: 1;
+    text-align: right;
+}
+
+ul#phonebook li a:hover {
+    color: #5A268D;
+}
+
+ul#phonebook li strong {
+    color: #3D0075;
+    font-weight: bold;
+}
+
+/* Scrollbar Styling */
+ul#phonebook::-webkit-scrollbar {
+    width: 6px;
+}
+
+ul#phonebook::-webkit-scrollbar-track {
+    background: #E2D6EF;
+    border-radius: 10px;
+}
+
+ul#phonebook::-webkit-scrollbar-thumb {
+    background: #A58BCC;
+    border-radius: 10px;
+}
+
+ul#phonebook::-webkit-scrollbar-thumb:hover {
+    background: #8360B9;
+}
+
+/* Phonebook Sections */
+#phonebook-container {
+    text-align: left;
+    width: 100%;
+}
+
+#vaPhonebookSection {
+    display: none;
+}
+
+/* Button Styling */
+button {
+    display: block;
+    width: 90%;
+    margin: 10px auto;
+    padding: 12px 20px;
+    font-size: 18px;
+    background: #5A268D;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+    background: #8360B9;
+}
+
+/* Toggle Buttons */
+#toggleView, #toggleDirectory {
+    display: block;
+    width: 90%;
+    margin: 10px auto;
+    padding: 12px 20px;
+    font-size: 18px;
+    background: #C2ABD0;
+    color: #3D0075;
+    border: 2px solid #A58BCC;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+#toggleView:hover, #toggleDirectory:hover {
+    background: #A58BCC;
+    transform: scale(1.05);
+}
+
+/* Toggle Switch Styles */
+.toggle-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #3D0075; /* Dark purple */
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
