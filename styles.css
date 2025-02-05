@@ -148,7 +148,7 @@ ul#phonebook {
     list-style-type: none;
     padding: 0; /* ✅ Ensures proper alignment */
     margin: 0;
-    max-height: 30vh;
+    max-height: 60vh;
     overflow-y: auto;
     border: 1px solid #A58BCC;
     border-radius: 8px;
