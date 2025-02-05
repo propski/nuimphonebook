@@ -89,12 +89,12 @@ input:focus {
 }
 
 #clearButton {
-    background: #D6C1E3; /* Red for delete */
+    background: #5A268D;
     font-size: 22px;
 }
 
 #clearButton:hover {
-    background: #c82333;
+    background: #8360B9;
 }
 
 /* Phonebook List Styling */
