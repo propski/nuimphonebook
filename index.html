@@ -3,15 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NMH Phone Numbers</title>
+    <title>NMH Phonebook</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>NMH Phone Numbers Directory</h1>
-        <input type="text" id="searchInput" placeholder="Search for names or numbers..." onkeyup="searchNames()">
-        
-        <h2>General</h2>
+        <!-- Phone Dialer Section -->
+        <section id="dialer-section">
+            <h1>Phone Dialer</h1>
+            <input type="text" id="phoneNumber" placeholder="Enter number" readonly>
+            <div class="dial-pad">
+                <button onclick="addNumber('1')">1</button>
+                <button onclick="addNumber('2')">2</button>
+                <button onclick="addNumber('3')">3</button>
+                <button onclick="addNumber('4')">4</button>
+                <button onclick="addNumber('5')">5</button>
+                <button onclick="addNumber('6')">6</button>
+                <button onclick="addNumber('7')">7</button>
+                <button onclick="addNumber('8')">8</button>
+                <button onclick="addNumber('9')">9</button>
+                <button onclick="clearNumber()">⌫</button>
+                <button onclick="addNumber('0')">0</button>
+                <button onclick="callNumber()">📞</button>
+            </div>
+        </section>
+
+        <!-- Database Section -->
+        <section id="database-section" style="display: none;">
+            <h1>NMH Phonebook Directory</h1>
+            <input type="text" id="searchInput" placeholder="Search for names or numbers..." onkeyup="searchNames()">
+            <ul id="phonebook">
+<h2>General</h2>
         <ul id="phonebook">
             <li><strong>Cardiac Arrest:</strong> 312-695-5555</li>
             <li><strong>IT Helpdesk:</strong> 312-696-4357</li>
@@ -134,22 +156,13 @@
             <li><strong>Medical Records:</strong> 312-926-3376</li>
             <li><strong>Imaging Disk Request:</strong> 312-926-5510</li>
         </ul>
+            </ul>
+        </section>
+
+        <!-- Toggle Button -->
+        <button id="toggleView" onclick="toggleView()">Go to Phonebook</button>
     </div>
 
-    <script>
-        function searchNames() {
-            let input = document.getElementById("searchInput").value.toLowerCase();
-            let items = document.querySelectorAll("#phonebook li");
-
-            items.forEach((li) => {
-                let text = li.textContent.toLowerCase();
-                if (text.includes(input)) {
-                    li.style.display = "block";
-                } else {
-                    li.style.display = "none";
-                }
-            });
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
