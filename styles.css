@@ -135,7 +135,7 @@ input:focus {
 /* Ensure NMH & VA phonebooks are formatted the same */
 #phonebookSection, #vaPhonebookSection {
     overflow-y: auto;
-    max-height: 75vh;  /* Allows scrolling */
+    max-height: 75vh;
     padding: 10px;
     background: #FFFFFF;
     border: 1px solid #A58BCC;
@@ -189,47 +189,6 @@ input:focus {
     background: #8360B9;
 }
 
-/* Button Styling */
-button {
-    display: block;
-    width: 90%;
-    margin: 10px auto;
-    padding: 12px 20px;
-    font-size: 18px;
-    background: #5A268D;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    text-align: center;
-    transition: background 0.3s ease-in-out;
-}
-
-button:hover {
-    background: #8360B9;
-}
-
-/* Toggle Buttons */
-#toggleView, #toggleDirectory {
-    display: block;
-    width: 90%;
-    margin: 10px auto;
-    padding: 12px 20px;
-    font-size: 18px;
-    background: #C2ABD0;
-    color: #3D0075;
-    border: 2px solid #A58BCC;
-    border-radius: 10px;
-    cursor: pointer;
-    text-align: center;
-    transition: background 0.3s ease-in-out, transform 0.2s;
-}
-
-#toggleView:hover, #toggleDirectory:hover {
-    background: #A58BCC;
-    transform: scale(1.05);
-}
-
 /* Toggle Switch Styles */
 .toggle-container {
     text-align: center;
@@ -279,4 +238,57 @@ input:checked + .slider {
 
 input:checked + .slider:before {
     transform: translateX(26px);
+}
+
+/* 🔹 VA MODE STYLING */
+.va-mode {
+    background: #000080 !important; /* Navy blue */
+    color: #FFFFFF !important;
+    font-family: "Courier New", Courier, monospace;
+}
+
+/* VA Dialer */
+.va-mode #dialer-section {
+    background: #C0C0C0; /* Light gray */
+    border: 2px solid #000080;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* VA Dial Pad */
+.va-mode .dial-pad button {
+    background: #C0C0C0;
+    color: #000000;
+    border: 2px solid #000080;
+    font-family: "Courier New", Courier, monospace;
+}
+
+.va-mode .dial-pad button:hover {
+    background: #A9A9A9;
+    border-color: #FFFFFF;
+}
+
+/* VA Phonebook */
+.va-mode #phonebook-container {
+    background: #FFFFFF;
+    border: 2px solid #000080;
+}
+
+.va-mode h1, .va-mode h2 {
+    color: #FFFFFF;
+    background: #000080;
+    padding: 5px;
+    font-family: "Courier New", Courier, monospace;
+}
+
+/* VA Phonebook Button */
+.va-mode #phonebookButton {
+    background: #000080;
+    color: #FFFFFF;
+    font-family: "Courier New", Courier, monospace;
+    border: 2px solid #FFFFFF;
+}
+
+.va-mode #phonebookButton:hover {
+    background: #1A1A8A;
 }
