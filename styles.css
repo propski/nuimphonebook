@@ -12,6 +12,11 @@ html, body {
     overflow: hidden;
 }
 
+/* Ensure full page can scroll */
+body {
+    overflow-y: auto;
+}
+
 /* Fullscreen Mobile Fix */
 html, body {
     -webkit-touch-callout: none;
@@ -120,76 +125,68 @@ input:focus {
 }
 
 /* Phonebook List Styling */
-ul#phonebook {
+#phonebook-container {
+    text-align: left;
+    width: 100%;
+    display: none;
+    padding: 10px;
+}
+
+/* Ensure NMH & VA phonebooks are formatted the same */
+#phonebookSection, #vaPhonebookSection {
+    overflow-y: auto;
+    max-height: 75vh;  /* Allows scrolling */
+    padding: 10px;
+    background: #FFFFFF;
+    border: 1px solid #A58BCC;
+    border-radius: 8px;
+}
+
+/* List Items for Phonebook */
+#phonebookSection ul, #vaPhonebookSection ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
-    max-height: 60vh;
-    overflow-y: auto;
-    border: 1px solid #A58BCC;
-    border-radius: 8px;
-    background: #FFFFFF;
-    scrollbar-width: thin;
-    scrollbar-color: #A58BCC #E2D6EF;
-    -webkit-overflow-scrolling: touch;
-    user-select: text;
 }
 
-ul#phonebook li {
+/* Phonebook List Items */
+#phonebookSection li, #vaPhonebookSection li {
+    padding: 12px;
+    font-size: 18px;
+    border-bottom: 1px solid #C8B0DD;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 15px;
-    border-bottom: 1px solid #C8B0DD;
-    font-size: 18px;
-    text-align: left;
-    width: 100%;
 }
 
-ul#phonebook li a {
+/* Phonebook Links */
+#phonebookSection li a, #vaPhonebookSection li a {
     text-decoration: none;
     color: #3D0075;
-    font-weight: normal; /* Makes phone numbers not bold */
-    flex-grow: 1;
-    text-align: right;
+    font-weight: normal;
 }
 
-ul#phonebook li a:hover {
+#phonebookSection li a:hover, #vaPhonebookSection li a:hover {
     color: #5A268D;
 }
 
-ul#phonebook li strong {
-    color: #3D0075;
-    font-weight: bold;
-}
-
 /* Scrollbar Styling */
-ul#phonebook::-webkit-scrollbar {
+#phonebookSection::-webkit-scrollbar, #vaPhonebookSection::-webkit-scrollbar {
     width: 6px;
 }
 
-ul#phonebook::-webkit-scrollbar-track {
+#phonebookSection::-webkit-scrollbar-track, #vaPhonebookSection::-webkit-scrollbar-track {
     background: #E2D6EF;
     border-radius: 10px;
 }
 
-ul#phonebook::-webkit-scrollbar-thumb {
+#phonebookSection::-webkit-scrollbar-thumb, #vaPhonebookSection::-webkit-scrollbar-thumb {
     background: #A58BCC;
     border-radius: 10px;
 }
 
-ul#phonebook::-webkit-scrollbar-thumb:hover {
+#phonebookSection::-webkit-scrollbar-thumb:hover, #vaPhonebookSection::-webkit-scrollbar-thumb:hover {
     background: #8360B9;
-}
-
-/* Phonebook Sections */
-#phonebook-container {
-    text-align: left;
-    width: 100%;
-}
-
-#vaPhonebookSection {
-    display: none;
 }
 
 /* Button Styling */
@@ -277,7 +274,7 @@ button:hover {
 }
 
 input:checked + .slider {
-    background-color: #3D0075; /* Dark purple */
+    background-color: #3D0075;
 }
 
 input:checked + .slider:before {
