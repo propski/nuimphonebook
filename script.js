@@ -13,12 +13,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Load mode from localStorage
     let isVA = localStorage.getItem("isVA") === "true";
+    let inPhonebookView = false; // Tracks whether the user is viewing the phonebook
 
     function applyMode() {
         isVA = localStorage.getItem("isVA") === "true";
         modeToggle.checked = isVA;
-        modeLabel.textContent = isVA ? "VA Mode" : "NMH Mode";  // ✅ Update text next to switch
+        modeLabel.textContent = isVA ? "VA Mode" : "NMH Mode";
         phonebookButton.textContent = isVA ? "Go to VA Phonebook" : "Go to NMH Phonebook";
+        inPhonebookView = false; // Default to Dialer View
         console.log("🔄 Mode Loaded: " + (isVA ? "VA" : "NMH"));
     }
 
@@ -32,14 +34,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Toggle between Dialer & Phonebook
     phonebookButton.addEventListener("click", function () {
-        if (dialerSection.style.display !== "none") {
+        inPhonebookView = !inPhonebookView; // Toggle the view state
+
+        if (inPhonebookView) {
             dialerSection.style.display = "none";
             phonebookContainer.style.display = "block";
             phonebookSection.style.display = isVA ? "none" : "block";
             vaPhonebookSection.style.display = isVA ? "block" : "none";
+            phonebookButton.textContent = isVA ? "Go to VA Dialer" : "Go to NMH Dialer"; // Update button text
         } else {
             dialerSection.style.display = "block";
             phonebookContainer.style.display = "none";
+            phonebookButton.textContent = isVA ? "Go to VA Phonebook" : "Go to NMH Phonebook"; // Reset button text
         }
     });
 
