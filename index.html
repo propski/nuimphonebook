@@ -5,15 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="NUIM Phonebook">
-    <link rel="apple-touch-icon" href="icon.png">
-    <link rel="manifest" href="manifest.json">
     <title>NMH Phonebook</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
     <div class="container">
+
         <!-- 📌 Mode Toggle Switch -->
         <div class="toggle-container">
             <label class="switch">
@@ -23,7 +21,7 @@
             <span id="modeLabel">NMH Mode</span>
         </div>
 
-        <!-- 📌 Phonebook Button (Dynamically Switches Between NMH/VA) -->
+        <!-- 📌 Phonebook Button -->
         <button id="phonebookButton">Go to NMH Phonebook</button>
 
         <!-- 📌 NMH Phone Dialer Section -->
@@ -45,27 +43,20 @@
             </div>
         </section>
 
-        <!-- 📌 Phonebook Sections (Hidden Initially) -->
+        <!-- 📌 Phonebook Sections -->
         <section id="phonebook-container" style="display: none;">
             
             <!-- 📌 NMH Phonebook -->
             <section id="phonebookSection">
                 <h1>NMH Phonebook</h1>
-                <input type="text" id="searchInput" placeholder="Search for names or numbers...">
-                <ul id="phonebook">
-                    <h2>General</h2>
+                <ul>
                     <li><strong>Cardiac Arrest:</strong> <a href="tel:3126955555">312-695-5555</a></li>
                     <li><strong>IT Helpdesk:</strong> <a href="tel:3129264357">312-926-4357</a></li>
                     <li><strong>NMFF Clinic:</strong> <a href="tel:3126958630">312-695-8630</a></li>
-
-                    <h2>Medicine Floors</h2>
-                    <li><strong>MICU:</strong> <a href="tel:3129265140">312-926-5140</a></li>
-                    <li><strong>MICU Charge RN:</strong> <a href="tel:3129265127">312-926-5127</a></li>
-                    <li><strong>MICU Fax:</strong> <a href="tel:3129269332">312-926-9332</a></li>
                 </ul>
             </section>
 
-            <!-- 📌 VA Phonebook (Hidden by Default) -->
+            <!-- 📌 VA Phonebook -->
             <section id="vaPhonebookSection" style="display: none;">
                 <h1>VA Phonebook</h1>
                 <ul>
@@ -75,6 +66,7 @@
             </section>
 
         </section>
+
     </div>
 
     <script src="script.js"></script>
