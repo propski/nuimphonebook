@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ JavaScript Loaded Successfully");
 
-    // Get elements
+    // 📌 Get elements
     let modeToggle = document.getElementById('modeToggle');
     let modeLabel = document.getElementById('modeLabel');
     let phonebookButton = document.getElementById('phonebookButton');
@@ -10,8 +10,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let phonebookSection = document.getElementById("phonebookSection");
     let vaPhonebookSection = document.getElementById("vaPhonebookSection");
     let inputField = document.getElementById("phoneNumber");
+    let body = document.body;
 
-    // Load mode from localStorage
+    // 📌 Load mode from localStorage
     let isVA = localStorage.getItem("isVA") === "true";
     let inPhonebookView = false; // Tracks whether the user is viewing the phonebook
 
@@ -20,11 +21,21 @@ document.addEventListener("DOMContentLoaded", function () {
         modeToggle.checked = isVA;
         modeLabel.textContent = isVA ? "VA Mode" : "NMH Mode";
         phonebookButton.textContent = isVA ? "Go to VA Phonebook" : "Go to NMH Phonebook";
+
+        // 📌 Apply different styles for VA vs. NMH mode
+        if (isVA) {
+            body.classList.add("va-mode");
+            body.classList.remove("nmh-mode");
+        } else {
+            body.classList.add("nmh-mode");
+            body.classList.remove("va-mode");
+        }
+
         inPhonebookView = false; // Default to Dialer View
         console.log("🔄 Mode Loaded: " + (isVA ? "VA" : "NMH"));
     }
 
-    // Toggle NMH / VA mode
+    // 📌 Handle mode toggle switch
     modeToggle.addEventListener("change", function () {
         isVA = modeToggle.checked;
         localStorage.setItem("isVA", isVA);
@@ -32,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("🔄 Mode Switched: " + (isVA ? "VA" : "NMH"));
     });
 
-    // Toggle between Dialer & Phonebook
+    // 📌 Toggle between Dialer & Phonebook
     phonebookButton.addEventListener("click", function () {
         inPhonebookView = !inPhonebookView; // Toggle the view state
 
@@ -49,34 +60,34 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // NMH and VA Prefix Mappings
+    // 📌 NMH and VA Prefix Mappings
     let nmhPrefixMapping = { "6": "312-926", "5": "312-695", "4": "312-694", "2": "312-472" };
     let vaPrefixMapping = { "5": "312-569", "4": "312-469" };
 
-    // Function to add numbers to the input field
+    // 📌 Function to add numbers to the input field
     function addNumber(num) {
         if (!inputField) return;
 
         let prefixMapping = isVA ? vaPrefixMapping : nmhPrefixMapping;
 
-        // If first digit is a shortcut, format it
+        // ✅ If first digit is a shortcut, format it
         if (inputField.value.length === 0 && prefixMapping[num]) {
             inputField.value = num + "-";
             return;
         }
 
-        // Allow full manual number input
+        // ✅ Allow full manual number input
         inputField.value += num;
     }
 
-    // Function to clear last entered digit
+    // 📌 Function to clear last entered digit
     function clearNumber() {
         if (inputField) {
             inputField.value = inputField.value.slice(0, -1);
         }
     }
 
-    // Function to make a call
+    // 📌 Function to make a call
     function callNumber() {
         if (!inputField) return;
         let number = inputField.value.trim();
@@ -101,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Attach event listeners to dial pad buttons
+    // 📌 Attach event listeners to dial pad buttons
     document.querySelectorAll(".dial-pad button").forEach(button => {
         button.addEventListener("click", function () {
             let value = this.innerText.trim();
@@ -119,6 +130,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }, { passive: false });
     });
 
-    // Apply stored mode on page load
+    // 📌 Apply stored mode on page load
     applyMode();
 });
