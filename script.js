@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Get elements
     let modeToggle = document.getElementById('modeToggle');
+    let modeLabel = document.getElementById('modeLabel');
     let phonebookButton = document.getElementById('phonebookButton');
     let dialerSection = document.getElementById("dialer-section");
     let phonebookContainer = document.getElementById("phonebook-container");
@@ -16,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function applyMode() {
         isVA = localStorage.getItem("isVA") === "true";
         modeToggle.checked = isVA;
+        modeLabel.textContent = isVA ? "VA Mode" : "NMH Mode";  // ✅ Update text next to switch
         phonebookButton.textContent = isVA ? "Go to VA Phonebook" : "Go to NMH Phonebook";
         console.log("🔄 Mode Loaded: " + (isVA ? "VA" : "NMH"));
     }
