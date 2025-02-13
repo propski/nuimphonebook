@@ -306,3 +306,11 @@ input:checked + .slider:before {
 .va-mode #phonebookButton:hover {
     background: #1A1A8A;
 }
+
+/* Ensure mode label text is visible in VA mode */
+.va-mode #modeLabel {
+    color: #FFFFFF !important; /* Ensures white text stands out */
+    font-weight: bold;
+    font-size: 18px;
+}
+
