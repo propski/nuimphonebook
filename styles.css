@@ -243,7 +243,7 @@ input:checked + .slider:before {
 /* 🔹 VA MODE STYLING */
 .va-mode {
     background: #000080 !important; /* Navy blue */
-    color: #000080 !important;
+    color: #FFFFFF !important;
     font-family: "Courier New", Courier, monospace;
 }
 
@@ -270,47 +270,19 @@ input:checked + .slider:before {
 
 /* 🔹 VA MODE - Call & Delete Buttons */
 .va-mode #callButton, .va-mode #clearButton {
-    background: #C0C0C0; /* Light gray to match the dial pad */
-    color: #000000; /* Black text for contrast */
-    border: 2px solid #000080; /* Navy border */
-    font-family: "Courier New", Courier, monospace;
+    background: #C0C0C0 !important; /* Light gray */
+    color: #000000 !important; /* Black text */
+    border: 2px solid #000080 !important; /* Navy border */
 }
 
 .va-mode #callButton:hover, .va-mode #clearButton:hover {
-    background: #A9A9A9; /* Slightly darker gray on hover */
-    border-color: #FFFFFF; /* White border for a polished look */
-}
-
-
-/* VA Phonebook */
-.va-mode #phonebook-container {
-    background: #FFFFFF;
-    border: 2px solid #000080;
-}
-
-.va-mode h1, .va-mode h2 {
-    color: #FFFFFF;
-    background: #000080;
-    padding: 5px;
-    font-family: "Courier New", Courier, monospace;
-}
-
-/* VA Phonebook Button */
-.va-mode #phonebookButton {
-    background: #000080;
-    color: #FFFFFF;
-    font-family: "Courier New", Courier, monospace;
-    border: 2px solid #FFFFFF;
-}
-
-.va-mode #phonebookButton:hover {
-    background: #1A1A8A;
+    background: #A9A9A9 !important; /* Slightly darker gray */
+    border-color: #FFFFFF !important;
 }
 
 /* Ensure mode label text is visible in VA mode */
 .va-mode #modeLabel {
-    color: #FFFFFF !important; /* Ensures white text stands out */
+    color: #FFFFFF !important;
     font-weight: bold;
     font-size: 18px;
 }
-
