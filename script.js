@@ -33,16 +33,16 @@ document.addEventListener("DOMContentLoaded", function () {
             body.classList.remove("va-mode");
         }
 
-        // 📌 If already in phonebook view, update it without toggling
+        // 📌 Ensure correct phonebook is displayed in directory mode
         if (inPhonebookView) {
             phonebookSection.style.display = isVA ? "none" : "block";
             vaPhonebookSection.style.display = isVA ? "block" : "none";
-        } 
+        }
 
         console.log("🔄 Mode Loaded: " + (isVA ? "VA" : "NMH"));
     }
 
-    // 📌 Handle mode toggle switch
+    // 📌 Handle mode toggle switch (for switching in the phonebook)
     modeToggle.addEventListener("change", function () {
         isVA = modeToggle.checked;
         localStorage.setItem("isVA", isVA);
@@ -59,14 +59,41 @@ document.addEventListener("DOMContentLoaded", function () {
             phonebookContainer.style.display = "block";
             phonebookSection.style.display = isVA ? "none" : "block";
             vaPhonebookSection.style.display = isVA ? "block" : "none";
-            phonebookButton.textContent = isVA ? "Go to VA Dialer" : "Go to NMH Dialer"; // Update button text
+            phonebookButton.textContent = isVA ? "Go to VA Dialer" : "Go to NMH Dialer";
         } else {
             dialerSection.style.display = "block";
             phonebookContainer.style.display = "none";
-            phonebookButton.textContent = isVA ? "Go to VA Phonebook" : "Go to NMH Phonebook"; // Reset button text
+            phonebookButton.textContent = isVA ? "Go to VA Phonebook" : "Go to NMH Phonebook";
         }
     });
 
-    // 📌 Apply stored mode on page load
-    applyMode();
-});
+    // 📌 NMH and VA Prefix Mappings
+    let nmhPrefixMapping = { "6": "312-926", "5": "312-695", "4": "312-694", "2": "312-472" };
+    let vaPrefixMapping = { "5": "312-569", "4": "312-469" };
+
+    // 📌 Function to add numbers to the input field
+    function addNumber(num) {
+        if (!inputField) return;
+
+        let prefixMapping = isVA ? vaPrefixMapping : nmhPrefixMapping;
+
+        // ✅ If first digit is a shortcut, format it
+        if (inputField.value.length === 0 && prefixMapping[num]) {
+            inputField.value = num + "-";
+            return;
+        }
+
+        // ✅ Allow full manual number input
+        inputField.value += num;
+    }
+
+    // 📌 Function to clear last entered digit
+    function clearNumber() {
+        if (inputField) {
+            inputField.value = inputField.value.slice(0, -1);
+        }
+    }
+
+    // 📌 Function to make a call
+    function callNumber() {
+        if (!inputField)
