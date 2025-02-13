@@ -19,7 +19,11 @@ document.addEventListener("DOMContentLoaded", function () {
     function applyMode() {
         isVA = localStorage.getItem("isVA") === "true";
         modeToggle.checked = isVA;
+        
+        // Ensure correct mode label text
         modeLabel.textContent = isVA ? "VA Mode" : "NMH Mode";
+
+        // Change the button text based on mode and view
         phonebookButton.textContent = inPhonebookView 
             ? (isVA ? "Go to VA Dialer" : "Go to NMH Dialer") 
             : (isVA ? "Go to VA Phonebook" : "Go to NMH Phonebook");
@@ -33,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
             body.classList.remove("va-mode");
         }
 
-        // 📌 Ensure correct phonebook is displayed in directory mode
+        // Ensure correct phonebook is displayed if in directory view
         if (inPhonebookView) {
             phonebookSection.style.display = isVA ? "none" : "block";
             vaPhonebookSection.style.display = isVA ? "block" : "none";
@@ -96,23 +100,47 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 📌 Function to make a call
     function callNumber() {
-        if (!inputField)
+        if (!inputField) return;
+        let number = inputField.value.trim();
 
+        let prefixMapping = isVA ? vaPrefixMapping : nmhPrefixMapping;
+        let pattern = isVA ? /^([45])-(\d{4})$/ : /^([2564])-(\d{4})$/;
 
-            function applyMode() {
-    isVA = localStorage.getItem("isVA") === "true";
-    modeToggle.checked = isVA;
-    
-    // Ensure correct mode label text
-    modeLabel.textContent = isVA ? "VA Mode" : "NMH Mode";
+        if (pattern.test(number)) {
+            let matchedPrefix = number.match(pattern)[1];
+            let lastFourDigits = number.match(pattern)[2];
+            number = `${prefixMapping[matchedPrefix]}-${lastFourDigits}`;
+        }
 
-    // Apply different styles for VA vs. NMH mode
-    if (isVA) {
-        body.classList.add("va-mode");
-        body.classList.remove("nmh-mode");
-    } else {
-        body.classList.add("nmh-mode");
-        body.classList.remove("va-mode");
+        console.log("📞 Dialing: " + number);
+
+        if (number) {
+            let dialLink = document.createElement("a");
+            dialLink.href = "tel:" + number;
+            document.body.appendChild(dialLink);
+            dialLink.click();
+            document.body.removeChild(dialLink);
+        }
     }
-}
 
+    // 📌 Attach event listeners to dial pad buttons
+    document.querySelectorAll(".dial-pad button").forEach(button => {
+        button.addEventListener("click", function () {
+            let value = this.innerText.trim();
+            if (value === "📞 Call") callNumber();
+            else if (value === "⌫") clearNumber();
+            else addNumber(value);
+        });
+
+        button.addEventListener("touchstart", function (event) {
+            event.preventDefault();
+            let value = this.innerText.trim();
+            if (value === "📞 Call") callNumber();
+            else if (value === "⌫") clearNumber();
+            else addNumber(value);
+        }, { passive: false });
+    });
+
+    // 📌 Apply stored mode on page load
+    applyMode();
+});
