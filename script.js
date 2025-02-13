@@ -97,3 +97,22 @@ document.addEventListener("DOMContentLoaded", function () {
     // 📌 Function to make a call
     function callNumber() {
         if (!inputField)
+
+
+            function applyMode() {
+    isVA = localStorage.getItem("isVA") === "true";
+    modeToggle.checked = isVA;
+    
+    // Ensure correct mode label text
+    modeLabel.textContent = isVA ? "VA Mode" : "NMH Mode";
+
+    // Apply different styles for VA vs. NMH mode
+    if (isVA) {
+        body.classList.add("va-mode");
+        body.classList.remove("nmh-mode");
+    } else {
+        body.classList.add("nmh-mode");
+        body.classList.remove("va-mode");
+    }
+}
+
