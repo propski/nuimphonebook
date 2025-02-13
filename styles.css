@@ -268,6 +268,20 @@ input:checked + .slider:before {
     border-color: #FFFFFF;
 }
 
+/* 🔹 VA MODE - Call & Delete Buttons */
+.va-mode #callButton, .va-mode #clearButton {
+    background: #C0C0C0; /* Light gray to match the dial pad */
+    color: #000000; /* Black text for contrast */
+    border: 2px solid #000080; /* Navy border */
+    font-family: "Courier New", Courier, monospace;
+}
+
+.va-mode #callButton:hover, .va-mode #clearButton:hover {
+    background: #A9A9A9; /* Slightly darker gray on hover */
+    border-color: #FFFFFF; /* White border for a polished look */
+}
+
+
 /* VA Phonebook */
 .va-mode #phonebook-container {
     background: #FFFFFF;
